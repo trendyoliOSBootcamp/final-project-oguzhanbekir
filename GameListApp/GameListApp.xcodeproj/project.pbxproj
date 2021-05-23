@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		C448F3A2265AEF6100E22BCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3A1265AEF6100E22BCD /* AppDelegate.swift */; };
 		C448F3A4265AEF6100E22BCD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3A3265AEF6100E22BCD /* SceneDelegate.swift */; };
-		C448F3A6265AEF6100E22BCD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3A5265AEF6100E22BCD /* ViewController.swift */; };
+		C448F3A6265AEF6100E22BCD /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3A5265AEF6100E22BCD /* GamesViewController.swift */; };
 		C448F3A9265AEF6100E22BCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C448F3A7265AEF6100E22BCD /* Main.storyboard */; };
 		C448F3AC265AEF6100E22BCD /* GameListApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C448F3AA265AEF6100E22BCD /* GameListApp.xcdatamodeld */; };
 		C448F3AE265AEF6100E22BCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C448F3AD265AEF6100E22BCD /* Assets.xcassets */; };
@@ -19,6 +19,8 @@
 		C448F3DC265AF13F00E22BCD /* CoreApi in Frameworks */ = {isa = PBXBuildFile; productRef = C448F3DB265AF13F00E22BCD /* CoreApi */; };
 		C448F3E1265AF37E00E22BCD /* HomeEndpointItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3E0265AF37E00E22BCD /* HomeEndpointItem.swift */; };
 		C448F3E7265AF85700E22BCD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3E6265AF85700E22BCD /* Game.swift */; };
+		C448F3FF265B0B2600E22BCD /* GameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3FD265B0B2600E22BCD /* GameCollectionViewCell.swift */; };
+		C448F400265B0B2600E22BCD /* GameCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C448F3FE265B0B2600E22BCD /* GameCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +44,7 @@
 		C448F39E265AEF6100E22BCD /* GameListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C448F3A1265AEF6100E22BCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C448F3A3265AEF6100E22BCD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C448F3A5265AEF6100E22BCD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C448F3A5265AEF6100E22BCD /* GamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		C448F3A8265AEF6100E22BCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C448F3AB265AEF6100E22BCD /* GameListApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameListApp.xcdatamodel; sourceTree = "<group>"; };
 		C448F3AD265AEF6100E22BCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,6 +58,8 @@
 		C448F3C8265AEF6200E22BCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C448F3E0265AF37E00E22BCD /* HomeEndpointItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEndpointItem.swift; sourceTree = "<group>"; };
 		C448F3E6265AF85700E22BCD /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		C448F3FD265B0B2600E22BCD /* GameCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCollectionViewCell.swift; sourceTree = "<group>"; };
+		C448F3FE265B0B2600E22BCD /* GameCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,10 +112,10 @@
 		C448F3A0265AEF6100E22BCD /* GameListApp */ = {
 			isa = PBXGroup;
 			children = (
+				C448F3F1265B0A8E00E22BCD /* Games */,
 				C448F3E5265AF82E00E22BCD /* Model */,
 				C448F3A1265AEF6100E22BCD /* AppDelegate.swift */,
 				C448F3A3265AEF6100E22BCD /* SceneDelegate.swift */,
-				C448F3A5265AEF6100E22BCD /* ViewController.swift */,
 				C448F3A7265AEF6100E22BCD /* Main.storyboard */,
 				C448F3AD265AEF6100E22BCD /* Assets.xcassets */,
 				C448F3AF265AEF6100E22BCD /* LaunchScreen.storyboard */,
@@ -153,6 +157,16 @@
 				C448F3E6265AF85700E22BCD /* Game.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C448F3F1265B0A8E00E22BCD /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				C448F3A5265AEF6100E22BCD /* GamesViewController.swift */,
+				C448F3FD265B0B2600E22BCD /* GameCollectionViewCell.swift */,
+				C448F3FE265B0B2600E22BCD /* GameCollectionViewCell.xib */,
+			);
+			path = Games;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C448F400265B0B2600E22BCD /* GameCollectionViewCell.xib in Resources */,
 				C448F3B1265AEF6100E22BCD /* LaunchScreen.storyboard in Resources */,
 				C448F3AE265AEF6100E22BCD /* Assets.xcassets in Resources */,
 				C448F3A9265AEF6100E22BCD /* Main.storyboard in Resources */,
@@ -288,9 +303,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C448F3A6265AEF6100E22BCD /* ViewController.swift in Sources */,
+				C448F3A6265AEF6100E22BCD /* GamesViewController.swift in Sources */,
 				C448F3E7265AF85700E22BCD /* Game.swift in Sources */,
 				C448F3A2265AEF6100E22BCD /* AppDelegate.swift in Sources */,
+				C448F3FF265B0B2600E22BCD /* GameCollectionViewCell.swift in Sources */,
 				C448F3A4265AEF6100E22BCD /* SceneDelegate.swift in Sources */,
 				C448F3AC265AEF6100E22BCD /* GameListApp.xcdatamodeld in Sources */,
 				C448F3E1265AF37E00E22BCD /* HomeEndpointItem.swift in Sources */,

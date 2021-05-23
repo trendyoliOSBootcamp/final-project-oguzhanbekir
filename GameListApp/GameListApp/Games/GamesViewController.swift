@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GamesViewController.swift
 //  GameListApp
 //
 //  Created by Oguzhan Bekir on 23.05.2021.
@@ -8,12 +8,19 @@
 import UIKit
 import CoreApi
 
-class ViewController: UIViewController {
+class GamesViewController: UIViewController {
     let networkManager: NetworkManager<HomeEndpointItem> = NetworkManager()
+    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        extractedFunc()
+    }
+
+    
+    fileprivate func extractedFunc() {
         networkManager.request(endpoint: .gamesList, type: GameListResponse.self) { result in
             switch result {
             case .success(let response):
@@ -25,6 +32,5 @@ class ViewController: UIViewController {
             }
         }
     }
-
 }
 

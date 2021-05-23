@@ -17,6 +17,8 @@
 		C448F3BC265AEF6100E22BCD /* GameListAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3BB265AEF6100E22BCD /* GameListAppTests.swift */; };
 		C448F3C7265AEF6200E22BCD /* GameListAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3C6265AEF6200E22BCD /* GameListAppUITests.swift */; };
 		C448F3DC265AF13F00E22BCD /* CoreApi in Frameworks */ = {isa = PBXBuildFile; productRef = C448F3DB265AF13F00E22BCD /* CoreApi */; };
+		C448F3E1265AF37E00E22BCD /* HomeEndpointItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3E0265AF37E00E22BCD /* HomeEndpointItem.swift */; };
+		C448F3E7265AF85700E22BCD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3E6265AF85700E22BCD /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		C448F3C2265AEF6200E22BCD /* GameListAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameListAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C448F3C6265AEF6200E22BCD /* GameListAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListAppUITests.swift; sourceTree = "<group>"; };
 		C448F3C8265AEF6200E22BCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C448F3E0265AF37E00E22BCD /* HomeEndpointItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEndpointItem.swift; sourceTree = "<group>"; };
+		C448F3E6265AF85700E22BCD /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 		C448F3A0265AEF6100E22BCD /* GameListApp */ = {
 			isa = PBXGroup;
 			children = (
+				C448F3E5265AF82E00E22BCD /* Model */,
 				C448F3A1265AEF6100E22BCD /* AppDelegate.swift */,
 				C448F3A3265AEF6100E22BCD /* SceneDelegate.swift */,
 				C448F3A5265AEF6100E22BCD /* ViewController.swift */,
@@ -112,6 +117,7 @@
 				C448F3AF265AEF6100E22BCD /* LaunchScreen.storyboard */,
 				C448F3B2265AEF6100E22BCD /* Info.plist */,
 				C448F3AA265AEF6100E22BCD /* GameListApp.xcdatamodeld */,
+				C448F3E0265AF37E00E22BCD /* HomeEndpointItem.swift */,
 			);
 			path = GameListApp;
 			sourceTree = "<group>";
@@ -139,6 +145,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C448F3E5265AF82E00E22BCD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C448F3E6265AF85700E22BCD /* Game.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,9 +289,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C448F3A6265AEF6100E22BCD /* ViewController.swift in Sources */,
+				C448F3E7265AF85700E22BCD /* Game.swift in Sources */,
 				C448F3A2265AEF6100E22BCD /* AppDelegate.swift in Sources */,
 				C448F3A4265AEF6100E22BCD /* SceneDelegate.swift in Sources */,
 				C448F3AC265AEF6100E22BCD /* GameListApp.xcdatamodeld in Sources */,
+				C448F3E1265AF37E00E22BCD /* HomeEndpointItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		C448F3B1265AEF6100E22BCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C448F3AF265AEF6100E22BCD /* LaunchScreen.storyboard */; };
 		C448F3BC265AEF6100E22BCD /* GameListAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3BB265AEF6100E22BCD /* GameListAppTests.swift */; };
 		C448F3C7265AEF6200E22BCD /* GameListAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3C6265AEF6200E22BCD /* GameListAppUITests.swift */; };
+		C448F3DC265AF13F00E22BCD /* CoreApi in Frameworks */ = {isa = PBXBuildFile; productRef = C448F3DB265AF13F00E22BCD /* CoreApi */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C448F3DC265AF13F00E22BCD /* CoreApi in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +87,7 @@
 				C448F3BA265AEF6100E22BCD /* GameListAppTests */,
 				C448F3C5265AEF6200E22BCD /* GameListAppUITests */,
 				C448F39F265AEF6100E22BCD /* Products */,
+				C448F3DA265AF13F00E22BCD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,6 +134,13 @@
 			path = GameListAppUITests;
 			sourceTree = "<group>";
 		};
+		C448F3DA265AF13F00E22BCD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,6 +157,9 @@
 			dependencies = (
 			);
 			name = GameListApp;
+			packageProductDependencies = (
+				C448F3DB265AF13F00E22BCD /* CoreApi */,
+			);
 			productName = GameListApp;
 			productReference = C448F39E265AEF6100E22BCD /* GameListApp.app */;
 			productType = "com.apple.product-type.application";
@@ -597,6 +610,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C448F3DB265AF13F00E22BCD /* CoreApi */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreApi;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C448F3AA265AEF6100E22BCD /* GameListApp.xcdatamodeld */ = {

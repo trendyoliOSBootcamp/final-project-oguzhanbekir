@@ -8,17 +8,11 @@
 import Foundation
 
 public protocol APIError: Decodable {
-    var message: String { get }
-    var debugMessage: String { get }
-    var code: Int { get }
-    var result: Bool { get }
+    var error: String { get }
 }
 
 struct ClientError: APIError {
-    var message: String
-    var debugMessage: String
-    var code: Int
-    var result: Bool
+    var error: String
 }
 
 public enum APIClientError: Error {
@@ -31,7 +25,7 @@ public enum APIClientError: Error {
     public var message: String {
         switch self {
         case .handledError(let error):
-            return error.message
+            return error.error
         case .decoding:
             return "Beklenmeyen bir hata oluştu"
         case .networkError:
@@ -53,7 +47,7 @@ public enum APIClientError: Error {
     public var debugMessage: String {
         switch self {
         case .handledError(let error):
-            return error.message
+            return error.error
         case .decoding(let decodingError):
             guard let decodingError = decodingError else { return "Decoding Error" }
             return "\(decodingError)"
@@ -63,15 +57,6 @@ public enum APIClientError: Error {
             return "Timeout"
         case .message(let message):
             return message
-        }
-    }
-
-    public var code: Int {
-        switch self {
-        case .handledError(let error):
-            return error.code
-        default:
-            return 500
         }
     }
 }

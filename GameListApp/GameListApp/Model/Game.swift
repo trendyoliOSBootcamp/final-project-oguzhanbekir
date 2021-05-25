@@ -17,7 +17,8 @@ struct GameListResponse: Decodable {
     let noindex, nofollow: Bool?
     let gameDescription: String?
     let nofollowCollections: [String]?
-
+    let userPlatforms: Bool?
+    
     enum CodingKeys: String, CodingKey {
         case count, next, previous, results
         case seoTitle = "seo_title"
@@ -27,6 +28,7 @@ struct GameListResponse: Decodable {
         case noindex, nofollow
         case gameDescription = "description"
         case nofollowCollections = "nofollow_collections"
+        case userPlatforms = "user_platforms"
     }
 }
 
@@ -47,12 +49,10 @@ struct GameDetail: Decodable {
     let userGame: String?
     let reviewsCount: Int?
     let saturatedColor, dominantColor: Color?
-    let platforms: [PlatformElement]?
     let parentPlatforms: [ParentPlatform]?
     let genres: [Genre]?
     let stores: [Store]?
     let clip: String?
-    let tags: [Genre]?
     let esrbRating: EsrbRating?
     let shortScreenshots: [ShortScreenshot]?
 
@@ -73,9 +73,8 @@ struct GameDetail: Decodable {
         case reviewsCount = "reviews_count"
         case saturatedColor = "saturated_color"
         case dominantColor = "dominant_color"
-        case platforms
         case parentPlatforms = "parent_platforms"
-        case genres, stores, clip, tags
+        case genres, stores, clip
         case esrbRating = "esrb_rating"
         case shortScreenshots = "short_screenshots"
     }
@@ -94,7 +93,12 @@ enum Color: String, Decodable {
 // MARK: - EsrbRating
 struct EsrbRating: Decodable {
     let id: Int?
-    let name, slug: String?
+    let name, slug, nameEn, nameRu: String?
+       enum CodingKeys: String, CodingKey {
+           case id, name, slug
+           case nameEn = "name_en"
+           case nameRu = "name_ru"
+       }
 }
 
 // MARK: - Genre
@@ -122,43 +126,6 @@ struct ParentPlatform: Decodable {
     let platform: EsrbRating?
 }
 
-// MARK: - PlatformElement
-struct PlatformElement: Decodable {
-    let platform: PlatformPlatform?
-    let releasedAt: String?
-    let requirementsEn, requirementsRu: Requirements?
-
-    enum CodingKeys: String, CodingKey {
-        case platform
-        case releasedAt = "released_at"
-        case requirementsEn = "requirements_en"
-        case requirementsRu = "requirements_ru"
-    }
-}
-
-// MARK: - PlatformPlatform
-struct PlatformPlatform: Decodable {
-    let id: Int?
-    let name, slug: String?
-    let image, yearEnd: String?
-    let yearStart: Int?
-    let gamesCount: Int?
-    let imageBackground: String?
-
-    enum CodingKeys: String, CodingKey {
-        case id, name, slug, image
-        case yearEnd = "year_end"
-        case yearStart = "year_start"
-        case gamesCount = "games_count"
-        case imageBackground = "image_background"
-    }
-}
-
-// MARK: - Requirements
-struct Requirements: Decodable {
-    let minimum, recommended: String?
-}
-
 // MARK: - Rating
 struct Rating: Decodable {
     let id: Int?
@@ -167,7 +134,7 @@ struct Rating: Decodable {
     let percent: Double?
 }
 
-enum Title: String, Codable {
+enum Title: String, Decodable {
     case exceptional = "exceptional"
     case meh = "meh"
     case recommended = "recommended"

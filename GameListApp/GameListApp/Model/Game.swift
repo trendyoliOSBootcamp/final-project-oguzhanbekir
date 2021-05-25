@@ -16,7 +16,6 @@ struct GameListResponse: Decodable {
     let seoTitle, seoDescription, seoKeywords, seoH1: String?
     let noindex, nofollow: Bool?
     let gameDescription: String?
-    let filters: Filters?
     let nofollowCollections: [String]?
 
     enum CodingKeys: String, CodingKey {
@@ -27,31 +26,10 @@ struct GameListResponse: Decodable {
         case seoH1 = "seo_h1"
         case noindex, nofollow
         case gameDescription = "description"
-        case filters
         case nofollowCollections = "nofollow_collections"
     }
 }
 
-// MARK: - Filters
-struct Filters: Decodable {
-    let years: [FiltersYear]?
-}
-
-// MARK: - FiltersYear
-struct FiltersYear: Decodable {
-    let from, to: Int?
-    let filter: String?
-    let decade: Int?
-    let years: [YearYear]?
-    let nofollow: Bool?
-    let count: Int?
-}
-
-// MARK: - YearYear
-struct YearYear: Decodable {
-    let year, count: Int?
-    let nofollow: Bool?
-}
 
 // MARK: - Result
 struct GameDetail: Decodable {
@@ -125,27 +103,14 @@ struct Genre: Decodable {
     let name, slug: String?
     let gamesCount: Int?
     let imageBackground: String?
-    let domain: Domain?
     let language: Language?
 
     enum CodingKeys: String, CodingKey {
         case id, name, slug
         case gamesCount = "games_count"
         case imageBackground = "image_background"
-        case domain, language
+        case language
     }
-}
-
-enum Domain: String, Decodable {
-    case appsAppleCOM = "apps.apple.com"
-    case epicgamesCOM = "epicgames.com"
-    case gogCOM = "gog.com"
-    case marketplaceXboxCOM = "marketplace.xbox.com"
-    case microsoftCOM = "microsoft.com"
-    case nintendoCOM = "nintendo.com"
-    case playGoogleCOM = "play.google.com"
-    case storePlaystationCOM = "store.playstation.com"
-    case storeSteampoweredCOM = "store.steampowered.com"
 }
 
 enum Language: String, Decodable {

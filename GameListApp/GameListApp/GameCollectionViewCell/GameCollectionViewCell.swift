@@ -48,7 +48,7 @@ class GameCollectionViewCell: UICollectionViewCell {
         
         prepareBannerImage(with: gamesList.backgroundImage)
         prepareRating(rating: gamesList.metacritic)
-        preparePlatform(platforms: gamesList.platforms)
+        preparePlatform(platforms: gamesList.parentPlatforms)
         prepareDescription(gamesList)
     }
     
@@ -62,6 +62,7 @@ class GameCollectionViewCell: UICollectionViewCell {
     private func prepareRating(rating: Int?) {
         let ratingColor : UIColor
         if let rating = rating {
+            
             switch rating {
             case 0...50:
                 ratingColor = .red
@@ -71,11 +72,20 @@ class GameCollectionViewCell: UICollectionViewCell {
                 ratingColor = .green
             }
             
-            ratingView.configure(title: String(rating), titleColor: ratingColor, backgroundColor: .clear, font: .systemFont(ofSize: 10), borderWidth: 0.5, borderColor: ratingColor.cgColor , cornerRadius: 4.0)
+            ratingView.configure(title: String(rating),
+                                 titleColor: ratingColor,
+                                 backgroundColor: .clear,
+                                 font: .systemFont(ofSize: 10),
+                                 borderWidth: 0.5,
+                                 borderColor: ratingColor.cgColor ,
+                                 cornerRadius: 4.0)
+            ratingView.isHidden = false
+        } else {
+            ratingView.isHidden = true
         }
     }
     
-    private func preparePlatform(platforms: [PlatformElement]?) {
+    private func preparePlatform(platforms: [ParentPlatform]?) {
         platformStackView.subviews.forEach({ $0.removeFromSuperview() })
 
         if let platforms = platforms {

@@ -22,6 +22,9 @@ class GamesViewController: UIViewController {
     let networkManager: NetworkManager<HomeEndpointItem> = NetworkManager()
     private var gamesList: [GameDetail]?
     private var layoutTwoColumns = false
+    private var nextPageUrl: String?
+    private var shouldFetchNextPage: Bool = false
+
     
     @IBOutlet private weak var rightBarButton: UIBarButtonItem!
     @IBOutlet private weak var gameListCollectionView: UICollectionView!
@@ -29,7 +32,7 @@ class GamesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fetchData()
+        fetchGameListData(.gamesList)
         prepareCollectionView()
     }
     
@@ -42,13 +45,18 @@ class GamesViewController: UIViewController {
     }
 
     
-    fileprivate func fetchData() {
-        networkManager.request(endpoint: .gamesList, type: GameListResponse.self) { [weak self] result in
+    fileprivate func fetchGameListData(_ endpoint : HomeEndpointItem) {
+        networkManager.request(endpoint: endpoint, type: GameListResponse.self) { [weak self] result in
             switch result {
             case .success(let response):
-                self?.gamesList = response.results
+                if self?.shouldFetchNextPage == false {
+                    self?.gamesList = response.results
+                } else {
+                    self?.gamesList?.append(contentsOf: response.results!)
+                }
+                
+                self?.nextPageUrl = response.next
                 self?.gameListCollectionView.reloadData()
-                print(response)
                 break
             case .failure(let error):
                 print(error.message)
@@ -129,11 +137,18 @@ extension GamesViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-//extension GamesViewController: UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        if indexPath.item == (gamesList.count - 1), shouldFetchNextPage {
-//            fetchWidgets(query: href)
-//        }
-//    }
-//}
+extension GamesViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.item == gamesList!.count - 1 {
+            shouldFetchNextPage = true
+            if let nextPageUrl = nextPageUrl {
+                let queryItems = URLComponents(string: nextPageUrl)?.queryItems
+                let param = queryItems?.filter({$0.name == "page"}).first
+                if let param = param?.value {
+                    fetchGameListData(.nextPage(query: param))
+                }
+            }
+        }
+    }
+}
 

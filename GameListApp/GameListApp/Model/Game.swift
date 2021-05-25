@@ -12,7 +12,7 @@ struct GameListResponse: Decodable {
     let count: Int?
     let next: String?
     let previous: String?
-    let results: [Result]?
+    let results: [GameDetail]?
     let seoTitle, seoDescription, seoKeywords, seoH1: String?
     let noindex, nofollow: Bool?
     let gameDescription: String?
@@ -54,7 +54,7 @@ struct YearYear: Decodable {
 }
 
 // MARK: - Result
-struct Result: Decodable {
+struct GameDetail: Decodable {
     let id: Int?
     let slug, name, released: String?
     let tba: Bool?

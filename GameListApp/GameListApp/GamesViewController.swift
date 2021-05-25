@@ -10,9 +10,9 @@ import CoreApi
 
 extension GamesViewController {
     fileprivate enum Constants {
-        static let cellDescriptionViewHeight: CGFloat = 159
-        static let cellBannerImageViewAspectRatio: CGFloat = 201/358
-        
+        static var cellDescriptionViewHeight: CGFloat = 159
+        static var cellBannerImageViewAspectRatio: CGFloat = 201/358
+
         static let cellLeftPadding: CGFloat = 16
         static let cellRightPadding: CGFloat = 16
     }
@@ -21,15 +21,15 @@ extension GamesViewController {
 class GamesViewController: UIViewController {
     let networkManager: NetworkManager<HomeEndpointItem> = NetworkManager()
     private var gamesList: [GameDetail]?
+    private var layoutTwoColumns = false
     
+    @IBOutlet private weak var rightBarButton: UIBarButtonItem!
     @IBOutlet private weak var gameListCollectionView: UICollectionView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         fetchData()
-        
         prepareCollectionView()
     }
     
@@ -37,6 +37,7 @@ class GamesViewController: UIViewController {
         gameListCollectionView.dataSource = self
         gameListCollectionView.delegate = self
         
+        gameListCollectionView.register(cellType: GameColumnCollectionViewCell.self)
         gameListCollectionView.register(cellType: GameCollectionViewCell.self)
     }
 
@@ -55,6 +56,25 @@ class GamesViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func changeLayoutButtonTapped(_ sender: Any) {
+        changeLayout()
+    }
+    
+    fileprivate func changeLayout() {
+        if layoutTwoColumns {
+            rightBarButton.image = UIImage(named: "smallLayoutButton")
+            Constants.cellDescriptionViewHeight = 159
+            Constants.cellBannerImageViewAspectRatio = 201/358
+            layoutTwoColumns = false
+        } else {
+            rightBarButton.image = UIImage(named: "bigLayoutButton")
+            Constants.cellDescriptionViewHeight = 72
+            Constants.cellBannerImageViewAspectRatio = 1
+            layoutTwoColumns = true
+        }
+        gameListCollectionView.reloadData()
+    }
 }
 
 extension GamesViewController: UICollectionViewDataSource {
@@ -63,24 +83,45 @@ extension GamesViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeCell(cellType: GameCollectionViewCell.self, indexPath: indexPath)
-        if let gameList = gamesList?[indexPath.item] {
-            cell.configure(gamesList: gameList)
+        if layoutTwoColumns {
+            let cell = collectionView.dequeCell(cellType: GameColumnCollectionViewCell.self, indexPath: indexPath)
+            if let gameList = gamesList?[indexPath.item] {
+                cell.configure(gamesList: gameList)
+            }
+            return cell
+        } else {
+            let cell = collectionView.dequeCell(cellType: GameCollectionViewCell.self, indexPath: indexPath)
+            if let gameList = gamesList?[indexPath.item] {
+                cell.configure(gamesList: gameList)
+            }
+            return cell
         }
-       
-        return cell
     }
     
     private func calculateCellHeight() -> CGFloat {
-           let cellWidth = gameListCollectionView.frame.size.width - (Constants.cellLeftPadding + Constants.cellRightPadding)
-           let bannerImageHeight = cellWidth * Constants.cellBannerImageViewAspectRatio
-           return Constants.cellDescriptionViewHeight + bannerImageHeight
+        var collectionViewWidth : CGFloat = 0
+        if layoutTwoColumns {
+            collectionViewWidth =  gameListCollectionView.frame.size.width / 2
+        } else {
+            collectionViewWidth =  gameListCollectionView.frame.size.width
+        }
+        let cellWidth = collectionViewWidth - (Constants.cellLeftPadding + Constants.cellRightPadding)
+        let bannerImageHeight = cellWidth * Constants.cellBannerImageViewAspectRatio
+        return Constants.cellDescriptionViewHeight + bannerImageHeight
+    }
+
+    private func calculateWidth(_ collectionView: UICollectionView) -> CGFloat {
+        if layoutTwoColumns {
+            return collectionView.frame.size.width / 2
+        } else {
+            return collectionView.frame.size.width
+        }
     }
 }
 
 extension GamesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        .init(width: collectionView.frame.size.width - (Constants.cellLeftPadding + Constants.cellRightPadding), height: calculateCellHeight())
+        .init(width: calculateWidth(collectionView) - (Constants.cellLeftPadding + Constants.cellRightPadding), height: calculateCellHeight())
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -95,3 +136,4 @@ extension GamesViewController: UICollectionViewDelegateFlowLayout {
 //        }
 //    }
 //}
+

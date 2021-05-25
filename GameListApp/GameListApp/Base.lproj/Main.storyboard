@@ -35,7 +35,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NCn-AT-RGy">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kyf-Z3-bZa">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="16" id="Kyf-Z3-bZa">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -56,10 +56,14 @@
                     <navigationItem key="navigationItem" title="Games" id="8dj-aH-JVE">
                         <barButtonItem key="rightBarButtonItem" image="smallLayoutButton" id="b0Q-Tj-8UB">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="changeLayoutButtonTapped:" destination="0Gt-7V-oDE" id="HP1-NM-d6t"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="gameListCollectionView" destination="NCn-AT-RGy" id="XaM-Zz-TjK"/>
+                        <outlet property="rightBarButton" destination="b0Q-Tj-8UB" id="WOf-Fc-iCC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YRN-Rt-fjc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

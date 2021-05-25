@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C40AB32A265C4397007F7535 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40AB329265C4397007F7535 /* UIColor+Extension.swift */; };
 		C40AB330265C455D007F7535 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = C40AB32F265C455D007F7535 /* SDWebImage */; };
+		C40AB336265D5226007F7535 /* GameColumnCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40AB334265D5226007F7535 /* GameColumnCollectionViewCell.swift */; };
+		C40AB337265D5226007F7535 /* GameColumnCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40AB335265D5226007F7535 /* GameColumnCollectionViewCell.xib */; };
 		C448F3A2265AEF6100E22BCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3A1265AEF6100E22BCD /* AppDelegate.swift */; };
 		C448F3A4265AEF6100E22BCD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3A3265AEF6100E22BCD /* SceneDelegate.swift */; };
 		C448F3A6265AEF6100E22BCD /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3A5265AEF6100E22BCD /* GamesViewController.swift */; };
@@ -49,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		C40AB329265C4397007F7535 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		C40AB334265D5226007F7535 /* GameColumnCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameColumnCollectionViewCell.swift; sourceTree = "<group>"; };
+		C40AB335265D5226007F7535 /* GameColumnCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameColumnCollectionViewCell.xib; sourceTree = "<group>"; };
 		C448F39E265AEF6100E22BCD /* GameListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C448F3A1265AEF6100E22BCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C448F3A3265AEF6100E22BCD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 			children = (
 				C448F3FD265B0B2600E22BCD /* GameCollectionViewCell.swift */,
 				C448F3FE265B0B2600E22BCD /* GameCollectionViewCell.xib */,
+				C40AB334265D5226007F7535 /* GameColumnCollectionViewCell.swift */,
+				C40AB335265D5226007F7535 /* GameColumnCollectionViewCell.xib */,
 			);
 			path = GameCollectionViewCell;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C40AB337265D5226007F7535 /* GameColumnCollectionViewCell.xib in Resources */,
 				C448F400265B0B2600E22BCD /* GameCollectionViewCell.xib in Resources */,
 				C448F3B1265AEF6100E22BCD /* LaunchScreen.storyboard in Resources */,
 				C448F3AE265AEF6100E22BCD /* Assets.xcassets in Resources */,
@@ -368,6 +375,7 @@
 				C448F3A2265AEF6100E22BCD /* AppDelegate.swift in Sources */,
 				C448F426265B180E00E22BCD /* NibView.swift in Sources */,
 				C448F3FF265B0B2600E22BCD /* GameCollectionViewCell.swift in Sources */,
+				C40AB336265D5226007F7535 /* GameColumnCollectionViewCell.swift in Sources */,
 				C448F3A4265AEF6100E22BCD /* SceneDelegate.swift in Sources */,
 				C448F3AC265AEF6100E22BCD /* GameListApp.xcdatamodeld in Sources */,
 				C448F420265B174D00E22BCD /* UICollectionViewCell+Extension.swift in Sources */,

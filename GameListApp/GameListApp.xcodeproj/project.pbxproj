@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C40AB32A265C4397007F7535 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40AB329265C4397007F7535 /* UIColor+Extension.swift */; };
+		C40AB330265C455D007F7535 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = C40AB32F265C455D007F7535 /* SDWebImage */; };
 		C448F3A2265AEF6100E22BCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3A1265AEF6100E22BCD /* AppDelegate.swift */; };
 		C448F3A4265AEF6100E22BCD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3A3265AEF6100E22BCD /* SceneDelegate.swift */; };
 		C448F3A6265AEF6100E22BCD /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3A5265AEF6100E22BCD /* GamesViewController.swift */; };
@@ -21,6 +23,11 @@
 		C448F3E7265AF85700E22BCD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3E6265AF85700E22BCD /* Game.swift */; };
 		C448F3FF265B0B2600E22BCD /* GameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3FD265B0B2600E22BCD /* GameCollectionViewCell.swift */; };
 		C448F400265B0B2600E22BCD /* GameCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C448F3FE265B0B2600E22BCD /* GameCollectionViewCell.xib */; };
+		C448F40D265B168300E22BCD /* StampView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C448F40C265B168300E22BCD /* StampView.xib */; };
+		C448F412265B16A200E22BCD /* StampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F411265B16A200E22BCD /* StampView.swift */; };
+		C448F418265B172000E22BCD /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F417265B172000E22BCD /* UICollectionView+Extension.swift */; };
+		C448F420265B174D00E22BCD /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F41F265B174D00E22BCD /* UICollectionViewCell+Extension.swift */; };
+		C448F426265B180E00E22BCD /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F425265B180E00E22BCD /* NibView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C40AB329265C4397007F7535 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		C448F39E265AEF6100E22BCD /* GameListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C448F3A1265AEF6100E22BCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C448F3A3265AEF6100E22BCD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +68,11 @@
 		C448F3E6265AF85700E22BCD /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		C448F3FD265B0B2600E22BCD /* GameCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCollectionViewCell.swift; sourceTree = "<group>"; };
 		C448F3FE265B0B2600E22BCD /* GameCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameCollectionViewCell.xib; sourceTree = "<group>"; };
+		C448F40C265B168300E22BCD /* StampView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StampView.xib; sourceTree = "<group>"; };
+		C448F411265B16A200E22BCD /* StampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampView.swift; sourceTree = "<group>"; };
+		C448F417265B172000E22BCD /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		C448F41F265B174D00E22BCD /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
+		C448F425265B180E00E22BCD /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C40AB330265C455D007F7535 /* SDWebImage in Frameworks */,
 				C448F3DC265AF13F00E22BCD /* CoreApi in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,9 +126,13 @@
 		C448F3A0265AEF6100E22BCD /* GameListApp */ = {
 			isa = PBXGroup;
 			children = (
-				C448F3F1265B0A8E00E22BCD /* Games */,
+				C448F424265B180200E22BCD /* Utils */,
+				C448F416265B16EE00E22BCD /* Extensions */,
+				C448F404265B161E00E22BCD /* Views */,
+				C448F3F1265B0A8E00E22BCD /* GameCollectionViewCell */,
 				C448F3E5265AF82E00E22BCD /* Model */,
 				C448F3A1265AEF6100E22BCD /* AppDelegate.swift */,
+				C448F3A5265AEF6100E22BCD /* GamesViewController.swift */,
 				C448F3A3265AEF6100E22BCD /* SceneDelegate.swift */,
 				C448F3A7265AEF6100E22BCD /* Main.storyboard */,
 				C448F3AD265AEF6100E22BCD /* Assets.xcassets */,
@@ -159,14 +177,48 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		C448F3F1265B0A8E00E22BCD /* Games */ = {
+		C448F3F1265B0A8E00E22BCD /* GameCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				C448F3A5265AEF6100E22BCD /* GamesViewController.swift */,
 				C448F3FD265B0B2600E22BCD /* GameCollectionViewCell.swift */,
 				C448F3FE265B0B2600E22BCD /* GameCollectionViewCell.xib */,
 			);
-			path = Games;
+			path = GameCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		C448F404265B161E00E22BCD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C448F40B265B166200E22BCD /* StampView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C448F40B265B166200E22BCD /* StampView */ = {
+			isa = PBXGroup;
+			children = (
+				C448F40C265B168300E22BCD /* StampView.xib */,
+				C448F411265B16A200E22BCD /* StampView.swift */,
+			);
+			path = StampView;
+			sourceTree = "<group>";
+		};
+		C448F416265B16EE00E22BCD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C448F417265B172000E22BCD /* UICollectionView+Extension.swift */,
+				C448F41F265B174D00E22BCD /* UICollectionViewCell+Extension.swift */,
+				C40AB329265C4397007F7535 /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C448F424265B180200E22BCD /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C448F425265B180E00E22BCD /* NibView.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +239,7 @@
 			name = GameListApp;
 			packageProductDependencies = (
 				C448F3DB265AF13F00E22BCD /* CoreApi */,
+				C40AB32F265C455D007F7535 /* SDWebImage */,
 			);
 			productName = GameListApp;
 			productReference = C448F39E265AEF6100E22BCD /* GameListApp.app */;
@@ -259,6 +312,9 @@
 				Base,
 			);
 			mainGroup = C448F395265AEF6100E22BCD;
+			packageReferences = (
+				C40AB32E265C455D007F7535 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = C448F39F265AEF6100E22BCD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -278,6 +334,7 @@
 				C448F400265B0B2600E22BCD /* GameCollectionViewCell.xib in Resources */,
 				C448F3B1265AEF6100E22BCD /* LaunchScreen.storyboard in Resources */,
 				C448F3AE265AEF6100E22BCD /* Assets.xcassets in Resources */,
+				C448F40D265B168300E22BCD /* StampView.xib in Resources */,
 				C448F3A9265AEF6100E22BCD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,12 +360,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C448F418265B172000E22BCD /* UICollectionView+Extension.swift in Sources */,
 				C448F3A6265AEF6100E22BCD /* GamesViewController.swift in Sources */,
 				C448F3E7265AF85700E22BCD /* Game.swift in Sources */,
+				C40AB32A265C4397007F7535 /* UIColor+Extension.swift in Sources */,
+				C448F412265B16A200E22BCD /* StampView.swift in Sources */,
 				C448F3A2265AEF6100E22BCD /* AppDelegate.swift in Sources */,
+				C448F426265B180E00E22BCD /* NibView.swift in Sources */,
 				C448F3FF265B0B2600E22BCD /* GameCollectionViewCell.swift in Sources */,
 				C448F3A4265AEF6100E22BCD /* SceneDelegate.swift in Sources */,
 				C448F3AC265AEF6100E22BCD /* GameListApp.xcdatamodeld in Sources */,
+				C448F420265B174D00E22BCD /* UICollectionViewCell+Extension.swift in Sources */,
 				C448F3E1265AF37E00E22BCD /* HomeEndpointItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -643,7 +705,23 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		C40AB32E265C455D007F7535 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.11.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		C40AB32F265C455D007F7535 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C40AB32E265C455D007F7535 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
 		C448F3DB265AF13F00E22BCD /* CoreApi */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CoreApi;

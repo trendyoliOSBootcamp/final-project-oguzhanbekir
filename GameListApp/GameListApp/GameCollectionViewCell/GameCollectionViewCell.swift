@@ -21,6 +21,12 @@ class GameCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var playTimeLabel: UILabel!
     @IBOutlet weak var descriptionContainerView: UIView!
     
+    @IBOutlet weak var playTimeStackView: UIStackView!
+    @IBOutlet weak var lineOfGenresView: UIView!
+    @IBOutlet weak var genresStackView: UIStackView!
+    @IBOutlet weak var releasedStackView: UIStackView!
+    
+    @IBOutlet weak var lineOfReleasedView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -107,19 +113,40 @@ class GameCollectionViewCell: UICollectionViewCell {
     
     private func prepareDescription(_ gamesList: GameDetail) {
         genresLabel.text?.removeAll()
-        if let playtimeText = gamesList.playtime,
-           let relasedText = gamesList.released {
-            playTimeLabel.text = "\(playtimeText) hours"
-
+        if let relasedText = gamesList.released {
             let date = convertDateFormater(relasedText)
             releasedTimeLabel.text = "\(date)"
+            releasedStackView.isHidden = false
+            lineOfReleasedView.isHidden = false
+        } else {
+            releasedStackView.isHidden = true
+            lineOfReleasedView.isHidden = true
         }
         
-        if let genres = gamesList.genres {
+        if gamesList.genres?.count != 0 {
+            let genres = gamesList.genres!
                 let joined = genres.map { $0.name ?? "" }.joined(separator: ", ")
                 genresLabel.text? += joined
-            
+            genresStackView.isHidden = false
+            lineOfReleasedView.isHidden = false
+        } else {
+            genresStackView.isHidden = true
+            lineOfReleasedView.isHidden = true
         }
+        
+        if let playtimeText = gamesList.playtime {
+            if playtimeText == 0 {
+                playTimeStackView.isHidden = true
+                lineOfGenresView.isHidden = true
+            } else {
+                playTimeLabel.text = playtimeText == 1 ? "\(playtimeText) hour" : "\(playtimeText) hours"
+                playTimeStackView.isHidden = false
+                lineOfGenresView.isHidden = false
+            }
+           
+        }
+        
+      
     }
     
     func convertDateFormater(_ date: String) -> String {

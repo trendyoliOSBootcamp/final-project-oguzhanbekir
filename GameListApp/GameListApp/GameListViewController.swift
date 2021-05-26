@@ -52,25 +52,7 @@ class GameListViewController: UIViewController {
         filterCollectionView.register(cellType: FilterCollectionViewCell.self)
     }
     
-//    fileprivate func fetchFilterItemData(query: String) {
-//        networkManager.request(endpoint: .filterItem(query: query), type: GameListResponse.self) { [weak self] result in
-//            switch result {
-//            case .success(let response):
-//                if self?.shouldFetchNextPage == false {
-//                    self?.gamesList = response.results
-//                } else {
-//                    self?.gamesList?.append(contentsOf: response.results!)
-//                }
-//
-//                self?.nextPageUrl = response.next
-//                self?.gameListCollectionView.reloadData()
-//                break
-//            case .failure(let error):
-//                print(error.message)
-//                break
-//            }
-//        }
-//    }
+
     
     
     fileprivate func fetchFilterListData() {
@@ -79,7 +61,6 @@ class GameListViewController: UIViewController {
             case .success(let response):
                 self?.filterList = response
                 self?.filterCollectionView.reloadData()
-                print(response)
                 break
             case .failure(let error):
                 print(error.message)
@@ -139,9 +120,9 @@ extension GameListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == filterCollectionView {
             return filterList?.count ?? .zero
+        } else {
+            return gamesList?.count ?? .zero
         }
-        
-        return gamesList?.count ?? .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -168,35 +149,37 @@ extension GameListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
         if collectionView == filterCollectionView {
             if let filterListData = filterList?.results {
-
                 shouldFetchNextPage = false
                 fetchGameListData(.filterItem(query: "\(filterListData[indexPath.item].id!)"))
             }            
+        } else {
+            if let id = gamesList?[indexPath.item].id {
+                let storyboard = UIStoryboard(name: "Main", bundle: .main)
+                let viewController = storyboard.instantiateViewController(identifier: "GameDetailViewController") as! GameDetailViewController
+                viewController.fetchGameDetailData(query: "\(id)")
+                navigationController?.pushViewController(viewController, animated: true)
+            }
         }
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: .main)
-        let viewController = storyboard.instantiateViewController(identifier: "GameDetailViewController") as! GameDetailViewController
-        navigationController?.pushViewController(viewController, animated: true)
-//        present(viewController, animated: true, completion: nil)
-        
     }
     
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        let item = collectionView.cellForItem(at: indexPath)
-        if item?.isSelected ?? false {
-            shouldFetchNextPage = false
-            collectionView.deselectItem(at: indexPath, animated: true)
-            fetchGameListData(.gamesList)
+        if collectionView == filterCollectionView {
+            let item = collectionView.cellForItem(at: indexPath)
+            if item?.isSelected ?? false {
+                shouldFetchNextPage = false
+                collectionView.deselectItem(at: indexPath, animated: true)
+                fetchGameListData(.gamesList)
+            } else {
+                collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
+                return true
+            }
+            return false
         } else {
-            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
             return true
         }
-
-        return false
     }
     
     private func calculateCellHeight() -> CGFloat {

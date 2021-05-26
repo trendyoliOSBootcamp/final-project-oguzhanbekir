@@ -103,7 +103,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ydT-gX-yja">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="670.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oUF-qx-fBA">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oUF-qx-fBA">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="223"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="oUF-qx-fBA" secondAttribute="height" multiplier="390:210" id="pfg-kY-uaV"/>
@@ -307,6 +307,12 @@
                                                             <constraint firstAttribute="trailing" secondItem="Nsb-hi-u0T" secondAttribute="trailing" constant="12" id="dpg-lR-QnR"/>
                                                             <constraint firstAttribute="bottom" secondItem="Nsb-hi-u0T" secondAttribute="bottom" constant="10" id="iMd-yi-8DG"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ia2-aZ-QRW">
                                                         <rect key="frame" x="0.0" y="52" width="382" height="36"/>
@@ -334,6 +340,12 @@
                                                             <constraint firstAttribute="bottom" secondItem="wVP-wK-Zsk" secondAttribute="bottom" constant="10" id="Lfc-Co-5dS"/>
                                                             <constraint firstAttribute="height" constant="36" id="s3a-Hk-eUJ"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
                                             </stackView>
@@ -385,6 +397,25 @@
                     <navigationItem key="navigationItem" title="Game Detail" id="PtD-RP-uje">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="gift" id="BVK-NV-kZd"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bannerImageView" destination="oUF-qx-fBA" id="7Qf-7I-LUR"/>
+                        <outlet property="descriptionLabel" destination="XXA-qh-CTO" id="ieP-4W-XMy"/>
+                        <outlet property="genresLabel" destination="26r-DK-UWm" id="f5b-Wd-afJ"/>
+                        <outlet property="genresStackView" destination="zsf-wj-aSd" id="HVY-O0-suZ"/>
+                        <outlet property="lineOfGenresView" destination="tt0-fw-dYc" id="ZKj-ag-YsY"/>
+                        <outlet property="lineOfPublishersView" destination="Gal-c7-wrP" id="dCB-2a-zP9"/>
+                        <outlet property="lineOfReleasedView" destination="qdB-L6-lWc" id="6hb-iU-9nR"/>
+                        <outlet property="playTimeLabel" destination="Sys-OH-gcK" id="1Ml-Ye-lXj"/>
+                        <outlet property="playTimeStackView" destination="ZtT-sM-JRZ" id="Rgh-xf-OXq"/>
+                        <outlet property="publishersLabel" destination="Emo-TH-uEi" id="JQm-BU-FFO"/>
+                        <outlet property="publishersStackView" destination="Ncw-3d-IKk" id="YD0-zG-Ytn"/>
+                        <outlet property="ratingView" destination="jJO-wt-Tvg" id="A9Q-oG-ZzK"/>
+                        <outlet property="releaseDateLabel" destination="rhE-At-EzV" id="QXh-jD-vxT"/>
+                        <outlet property="releasedStackView" destination="ydR-SE-uiZ" id="w1r-sy-c5D"/>
+                        <outlet property="titleLabel" destination="PaP-Mz-EHS" id="58H-uO-aew"/>
+                        <outlet property="visitRedditView" destination="oCy-NB-Eeq" id="BMZ-qL-eri"/>
+                        <outlet property="visitWebsiteView" destination="ia2-aZ-QRW" id="kxv-li-oek"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kbf-ib-mYq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

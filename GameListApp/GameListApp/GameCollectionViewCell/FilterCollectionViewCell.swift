@@ -8,7 +8,6 @@
 import UIKit
 
 class FilterCollectionViewCell: UICollectionViewCell {
-
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {

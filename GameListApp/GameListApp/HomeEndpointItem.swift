@@ -13,6 +13,7 @@ enum HomeEndpointItem: Endpoint {
     case gamesList
     case filterList
     case filterItem(query: String)
+    case gameDetail(query: String)
     
     var baseUrl: String { "https://api.rawg.io/api/" }
     var path: String {
@@ -21,6 +22,7 @@ enum HomeEndpointItem: Endpoint {
         case .gamesList: return "games?key=f7bda52777bd4e4cabb8386fbed8084e"
         case .filterList: return "platforms/lists/parents?key=f7bda52777bd4e4cabb8386fbed8084e"
         case .filterItem(let query): return "games?key=f7bda52777bd4e4cabb8386fbed8084e&parent_platforms=\(query)"
+        case .gameDetail(let query): return "games/\(query)?key=f7bda52777bd4e4cabb8386fbed8084e"
         }
     }
 
@@ -30,6 +32,7 @@ enum HomeEndpointItem: Endpoint {
         case .gamesList: return .get
         case .filterList: return .get
         case .filterItem: return .get
+        case .gameDetail: return .get
         }
     }
 }

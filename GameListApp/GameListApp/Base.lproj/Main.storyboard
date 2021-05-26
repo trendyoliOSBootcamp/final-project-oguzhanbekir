@@ -81,6 +81,7 @@
                     <connections>
                         <outlet property="filterCollectionView" destination="2OY-xN-7LY" id="jkp-tq-aQm"/>
                         <outlet property="gameListCollectionView" destination="NCn-AT-RGy" id="XaM-Zz-TjK"/>
+                        <outlet property="headerViewHeightConstraint" destination="Dah-qY-sjB" id="cxp-IT-ZLk"/>
                         <outlet property="rightBarButton" destination="b0Q-Tj-8UB" id="WOf-Fc-iCC"/>
                         <segue destination="Mg7-Wn-6GV" kind="show" id="sxW-VO-ZnL"/>
                     </connections>
@@ -494,7 +495,7 @@
         <image name="next" width="9" height="17"/>
         <image name="smallLayoutButton" width="30" height="30"/>
         <namedColor name="descriptionItemBackground">
-            <color red="0.11372549019607843" green="0.11372549019607843" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.11400000005960464" green="0.11400000005960464" blue="0.11400000005960464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="lineColor">
             <color red="0.14499999582767487" green="0.14499999582767487" blue="0.14499999582767487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -33,7 +33,7 @@ class GameListViewController: UIViewController {
     @IBOutlet private weak var rightBarButton: UIBarButtonItem!
     @IBOutlet private weak var gameListCollectionView: UICollectionView!
     @IBOutlet weak var filterCollectionView: UICollectionView!
-    
+    @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -137,6 +137,22 @@ class GameListViewController: UIViewController {
         
 //        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
 //        navigationItem.scrollEdgeAppearance?.backButtonAppearance
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 50 {
+            view.layoutIfNeeded()
+            headerViewHeightConstraint.constant = 0
+            UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction], animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        } else {
+            view.layoutIfNeeded()
+            headerViewHeightConstraint.constant = 68 
+            UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction], animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+         }
     }
 }
 

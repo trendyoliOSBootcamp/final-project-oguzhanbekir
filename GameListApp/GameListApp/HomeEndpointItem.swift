@@ -21,7 +21,7 @@ enum HomeEndpointItem: Endpoint {
         case .nextPage(let query): return "games?\(query)"
         case .gamesList: return "games?key=f7bda52777bd4e4cabb8386fbed8084e"
         case .filterList: return "platforms/lists/parents?key=f7bda52777bd4e4cabb8386fbed8084e"
-        case .filterItem(let query): return "games?key=f7bda52777bd4e4cabb8386fbed8084e&parent_platforms=\(query)"
+        case .filterItem(let query): return "games?key=f7bda52777bd4e4cabb8386fbed8084e\(query)"
         case .gameDetail(let query): return "games/\(query)?key=f7bda52777bd4e4cabb8386fbed8084e"
         }
     }

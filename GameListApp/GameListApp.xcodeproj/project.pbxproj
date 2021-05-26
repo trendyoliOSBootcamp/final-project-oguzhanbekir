@@ -18,6 +18,7 @@
 		C40AB350265ECDDA007F7535 /* GameDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40AB34F265ECDDA007F7535 /* GameDetail.swift */; };
 		C40AB356265EEB64007F7535 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40AB355265EEB64007F7535 /* LoadingView.swift */; };
 		C40AB35E265EEB8B007F7535 /* LoadingShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40AB35D265EEB8B007F7535 /* LoadingShowable.swift */; };
+		C40AB363265EFC95007F7535 /* UICollection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40AB362265EFC95007F7535 /* UICollection+Extension.swift */; };
 		C448F3A2265AEF6100E22BCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3A1265AEF6100E22BCD /* AppDelegate.swift */; };
 		C448F3A4265AEF6100E22BCD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3A3265AEF6100E22BCD /* SceneDelegate.swift */; };
 		C448F3A6265AEF6100E22BCD /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3A5265AEF6100E22BCD /* GameListViewController.swift */; };
@@ -67,6 +68,7 @@
 		C40AB34F265ECDDA007F7535 /* GameDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetail.swift; sourceTree = "<group>"; };
 		C40AB355265EEB64007F7535 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		C40AB35D265EEB8B007F7535 /* LoadingShowable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingShowable.swift; sourceTree = "<group>"; };
+		C40AB362265EFC95007F7535 /* UICollection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollection+Extension.swift"; sourceTree = "<group>"; };
 		C448F39E265AEF6100E22BCD /* GameListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C448F3A1265AEF6100E22BCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C448F3A3265AEF6100E22BCD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				C448F417265B172000E22BCD /* UICollectionView+Extension.swift */,
 				C448F41F265B174D00E22BCD /* UICollectionViewCell+Extension.swift */,
 				C40AB329265C4397007F7535 /* UIColor+Extension.swift */,
+				C40AB362265EFC95007F7535 /* UICollection+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				C448F426265B180E00E22BCD /* NibView.swift in Sources */,
 				C448F3FF265B0B2600E22BCD /* GameCollectionViewCell.swift in Sources */,
 				C40AB336265D5226007F7535 /* GameColumnCollectionViewCell.swift in Sources */,
+				C40AB363265EFC95007F7535 /* UICollection+Extension.swift in Sources */,
 				C40AB35E265EEB8B007F7535 /* LoadingShowable.swift in Sources */,
 				C448F3A4265AEF6100E22BCD /* SceneDelegate.swift in Sources */,
 				C448F3AC265AEF6100E22BCD /* GameListApp.xcdatamodeld in Sources */,

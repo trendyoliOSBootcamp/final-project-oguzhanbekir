@@ -26,8 +26,9 @@ class GameListViewController: UIViewController {
     private var layoutTwoColumns = false
     private var nextPageUrl: String?
     private var shouldFetchNextPage: Bool = false
-    
     private var filterList: Filter?
+    private var searchTextWithFilter = ""
+    private var searchText = ""
     
     @IBOutlet private weak var rightBarButton: UIBarButtonItem!
     @IBOutlet private weak var gameListCollectionView: UICollectionView!
@@ -126,9 +127,8 @@ class GameListViewController: UIViewController {
         navBarAppearance.backgroundColor = .navigationControllerBackgroundGray
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-        searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
-        searchController.searchResultsUpdater = self
+        navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.placeholder = "Search"
         searchController.searchBar.barStyle = UIBarStyle.black
         searchController.obscuresBackgroundDuringPresentation = false
@@ -145,6 +145,11 @@ extension GameListViewController: UICollectionViewDataSource {
         if collectionView == filterCollectionView {
             return filterList?.count ?? .zero
         } else {
+            if gamesList?.count == 0 {
+                    self.gameListCollectionView.setEmptyMessage("No game has been found")
+                } else {
+                    self.gameListCollectionView.restore()
+                }
             return gamesList?.count ?? .zero
         }
     }
@@ -152,7 +157,6 @@ extension GameListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == filterCollectionView {
             let cell = collectionView.dequeCell(cellType: FilterCollectionViewCell.self, indexPath: indexPath)
-
             cell.titleLabel.text = filterList?.results?[indexPath.item].name
             return cell
         } else {
@@ -176,8 +180,14 @@ extension GameListViewController: UICollectionViewDataSource {
         if collectionView == filterCollectionView {
             if let filterListData = filterList?.results {
                 shouldFetchNextPage = false
-                fetchGameListData(.filterItem(query: "\(filterListData[indexPath.item].id!)"))
-            }            
+                searchTextWithFilter = "&parent_platforms=\(filterListData[indexPath.item].id!)"
+                if searchText != "" {
+                    fetchGameListData(.filterItem(query: "&parent_platforms=\(filterListData[indexPath.item].id!)&search=\(searchText)"))
+                } else {
+                    fetchGameListData(.filterItem(query: "&parent_platforms=\(filterListData[indexPath.item].id!)"))
+
+                }
+            }
         } else {
             if let id = gamesList?[indexPath.item].id {
                 let storyboard = UIStoryboard(name: "Main", bundle: .main)
@@ -194,8 +204,14 @@ extension GameListViewController: UICollectionViewDataSource {
             let item = collectionView.cellForItem(at: indexPath)
             if item?.isSelected ?? false {
                 shouldFetchNextPage = false
+                searchTextWithFilter = ""
                 collectionView.deselectItem(at: indexPath, animated: true)
-                fetchGameListData(.gamesList)
+                if searchText != "" {
+                    fetchGameListData(.filterItem(query: "&search=\(searchText)"))
+                } else {
+                    fetchGameListData(.filterItem(query: ""))
+                }
+                
             } else {
                 collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
                 return true
@@ -257,26 +273,25 @@ extension GameListViewController: UICollectionViewDelegate {
             }
         }
     }
+    
+    
+ 
 }
 
-
-
-extension GameListViewController: UISearchResultsUpdating, UISearchBarDelegate{
-    func updateSearchResults(for searchController: UISearchController)  {
+extension GameListViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)  {
         guard let text = searchController.searchBar.text else { return }
-        print(text)
-//        guard let vc = searchController.searchResultsController as? ResultVC else { fatalError() }
+        searchText = text
+        if searchTextWithFilter != "" {
+            fetchGameListData(.filterItem(query: "&search=\(text)\(searchTextWithFilter)"))
+        } else {
+            fetchGameListData(.filterItem(query: "&search=\(text)"))
+        }
         
-//        var filteredData: [ListOfReminder] = []
-//        data.forEach { (reminder) in
-//            if let itemArray2 = reminder.items?.filter({$0.title?.lowercased().contains(text.lowercased()) ?? false }) {
-//                if itemArray2.count > 0 {
-//                    let reminder2 = ListOfReminder(id: reminder.id, title: reminder.title, color: reminder.color, image: reminder.image, items: itemArray2)
-//                    filteredData.append(reminder2)
-//                }
-//            }
-//        }
-//        vc.data = filteredData
-//        vc.myTableView.reloadData()
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchText = ""
     }
 }

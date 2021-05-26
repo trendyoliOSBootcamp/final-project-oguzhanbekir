@@ -19,12 +19,11 @@ class GameCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var releasedTimeLabel: UILabel!
     @IBOutlet private weak var genresLabel: UILabel!
     @IBOutlet private weak var playTimeLabel: UILabel!
-    @IBOutlet weak var descriptionContainerView: UIView!
-    
-    @IBOutlet weak var playTimeStackView: UIStackView!
-    @IBOutlet weak var lineOfGenresView: UIView!
-    @IBOutlet weak var genresStackView: UIStackView!
-    @IBOutlet weak var releasedStackView: UIStackView!
+    @IBOutlet private weak var descriptionContainerView: UIView!
+    @IBOutlet private weak var playTimeStackView: UIStackView!
+    @IBOutlet private weak var lineOfGenresView: UIView!
+    @IBOutlet private weak var genresStackView: UIStackView!
+    @IBOutlet private weak var releasedStackView: UIStackView!
     
     @IBOutlet weak var lineOfReleasedView: UIView!
     override func awakeFromNib() {
@@ -150,11 +149,11 @@ class GameCollectionViewCell: UICollectionViewCell {
     }
     
     func convertDateFormater(_ date: String) -> String {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            let date = dateFormatter.date(from: date)
-            dateFormatter.dateFormat = "MMM dd, yyyy"
-            return  dateFormatter.string(from: date!)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: date)
+        dateFormatter.dateFormat = "MMM dd, yyyy"
+        return  dateFormatter.string(from: date!)
     }
 
 }

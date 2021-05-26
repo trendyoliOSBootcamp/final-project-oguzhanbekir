@@ -20,6 +20,8 @@ extension GameListViewController {
 
 class GameListViewController: UIViewController {
     let networkManager: NetworkManager<HomeEndpointItem> = NetworkManager()
+    let searchController = UISearchController()
+
     private var gamesList: [GameDetail]?
     private var layoutTwoColumns = false
     private var nextPageUrl: String?
@@ -37,6 +39,8 @@ class GameListViewController: UIViewController {
         fetchGameListData(.gamesList)
         prepareCollectionView()
         fetchFilterListData()
+        
+        configureSearchController()
     }
     
     private func prepareCollectionView() {
@@ -113,6 +117,26 @@ class GameListViewController: UIViewController {
             layoutTwoColumns = true
         }
         gameListCollectionView.reloadData()
+    }
+    
+    private func configureSearchController() {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.backgroundColor = .navigationControllerBackgroundGray
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.barStyle = UIBarStyle.black
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
+//        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+//        navigationItem.scrollEdgeAppearance?.backButtonAppearance
     }
 }
 
@@ -237,3 +261,22 @@ extension GameListViewController: UICollectionViewDelegate {
 
 
 
+extension GameListViewController: UISearchResultsUpdating, UISearchBarDelegate{
+    func updateSearchResults(for searchController: UISearchController)  {
+        guard let text = searchController.searchBar.text else { return }
+        print(text)
+//        guard let vc = searchController.searchResultsController as? ResultVC else { fatalError() }
+        
+//        var filteredData: [ListOfReminder] = []
+//        data.forEach { (reminder) in
+//            if let itemArray2 = reminder.items?.filter({$0.title?.lowercased().contains(text.lowercased()) ?? false }) {
+//                if itemArray2.count > 0 {
+//                    let reminder2 = ListOfReminder(id: reminder.id, title: reminder.title, color: reminder.color, image: reminder.image, items: itemArray2)
+//                    filteredData.append(reminder2)
+//                }
+//            }
+//        }
+//        vc.data = filteredData
+//        vc.myTableView.reloadData()
+    }
+}

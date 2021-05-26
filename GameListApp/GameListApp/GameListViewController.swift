@@ -46,7 +46,7 @@ class GameListViewController: UIViewController {
         gameListCollectionView.delegate = self
         
         
-        
+    
         gameListCollectionView.register(cellType: GameColumnCollectionViewCell.self)
         gameListCollectionView.register(cellType: GameCollectionViewCell.self)
         filterCollectionView.register(cellType: FilterCollectionViewCell.self)

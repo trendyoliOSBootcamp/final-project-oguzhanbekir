@@ -16,6 +16,8 @@
 		C40AB343265D82DC007F7535 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40AB342265D82DC007F7535 /* Filter.swift */; };
 		C40AB34B265EB5CB007F7535 /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40AB34A265EB5CB007F7535 /* GameDetailViewController.swift */; };
 		C40AB350265ECDDA007F7535 /* GameDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40AB34F265ECDDA007F7535 /* GameDetail.swift */; };
+		C40AB356265EEB64007F7535 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40AB355265EEB64007F7535 /* LoadingView.swift */; };
+		C40AB35E265EEB8B007F7535 /* LoadingShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40AB35D265EEB8B007F7535 /* LoadingShowable.swift */; };
 		C448F3A2265AEF6100E22BCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3A1265AEF6100E22BCD /* AppDelegate.swift */; };
 		C448F3A4265AEF6100E22BCD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3A3265AEF6100E22BCD /* SceneDelegate.swift */; };
 		C448F3A6265AEF6100E22BCD /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F3A5265AEF6100E22BCD /* GameListViewController.swift */; };
@@ -63,6 +65,8 @@
 		C40AB342265D82DC007F7535 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		C40AB34A265EB5CB007F7535 /* GameDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
 		C40AB34F265ECDDA007F7535 /* GameDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetail.swift; sourceTree = "<group>"; };
+		C40AB355265EEB64007F7535 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		C40AB35D265EEB8B007F7535 /* LoadingShowable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingShowable.swift; sourceTree = "<group>"; };
 		C448F39E265AEF6100E22BCD /* GameListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C448F3A1265AEF6100E22BCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C448F3A3265AEF6100E22BCD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +120,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C40AB354265EEB4F007F7535 /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				C40AB355265EEB64007F7535 /* LoadingView.swift */,
+			);
+			path = LoadingView;
+			sourceTree = "<group>";
+		};
 		C448F395265AEF6100E22BCD = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +222,7 @@
 		C448F404265B161E00E22BCD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C40AB354265EEB4F007F7535 /* LoadingView */,
 				C448F40B265B166200E22BCD /* StampView */,
 			);
 			path = Views;
@@ -238,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				C448F425265B180E00E22BCD /* NibView.swift */,
+				C40AB35D265EEB8B007F7535 /* LoadingShowable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -396,10 +410,12 @@
 				C448F426265B180E00E22BCD /* NibView.swift in Sources */,
 				C448F3FF265B0B2600E22BCD /* GameCollectionViewCell.swift in Sources */,
 				C40AB336265D5226007F7535 /* GameColumnCollectionViewCell.swift in Sources */,
+				C40AB35E265EEB8B007F7535 /* LoadingShowable.swift in Sources */,
 				C448F3A4265AEF6100E22BCD /* SceneDelegate.swift in Sources */,
 				C448F3AC265AEF6100E22BCD /* GameListApp.xcdatamodeld in Sources */,
 				C448F420265B174D00E22BCD /* UICollectionViewCell+Extension.swift in Sources */,
 				C448F3E1265AF37E00E22BCD /* HomeEndpointItem.swift in Sources */,
+				C40AB356265EEB64007F7535 /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

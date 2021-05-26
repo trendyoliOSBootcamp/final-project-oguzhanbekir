@@ -8,7 +8,7 @@
 import UIKit
 import CoreApi
 
-class GameDetailViewController: UIViewController {
+class GameDetailViewController: UIViewController, LoadingShowable {
     @IBOutlet private weak var bannerImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var ratingView: StampView!
@@ -54,7 +54,9 @@ class GameDetailViewController: UIViewController {
     }
     
     func fetchGameDetailData(query: String) {
+        showLoading()
         networkManager.request(endpoint: .gameDetail(query: query), type: GameDetailList.self) { [weak self] result in
+            self?.hideLoading()
             switch result {
             case .success(let response):
                 self?.setupView(response: response)

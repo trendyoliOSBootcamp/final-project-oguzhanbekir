@@ -19,6 +19,10 @@ extension UIColor {
     class var platformGray: UIColor {
         UIColor(red: 45/255, green: 45/255, blue: 45/255, alpha: 1)
     }
+    
+    class var navigationControllerBackgroundGray: UIColor {
+        UIColor(red: 29/255, green: 29/255, blue: 29/255, alpha: 1)
+    }
 
     convenience init(hex: String) {
         var hexString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()

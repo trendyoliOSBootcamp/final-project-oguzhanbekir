@@ -176,6 +176,12 @@ extension GameListViewController: UICollectionViewDataSource {
                 fetchGameListData(.filterItem(query: "\(filterListData[indexPath.item].id!)"))
             }            
         }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        let viewController = storyboard.instantiateViewController(identifier: "GameDetailViewController") as! GameDetailViewController
+        navigationController?.pushViewController(viewController, animated: true)
+//        present(viewController, animated: true, completion: nil)
+        
     }
     
     

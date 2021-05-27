@@ -11,7 +11,6 @@ import SDWebImage
 class GameCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var bannerImageView: UIImageView!
-    @IBOutlet private weak var addToWishList: UIView!
     @IBOutlet private weak var platformStackView: UIStackView!
     @IBOutlet private weak var stampView: StampView!
     @IBOutlet private weak var ratingView: StampView!
@@ -24,12 +23,23 @@ class GameCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var lineOfGenresView: UIView!
     @IBOutlet private weak var genresStackView: UIStackView!
     @IBOutlet private weak var releasedStackView: UIStackView!
+    @IBOutlet private weak var lineOfReleasedView: UIView!
+    @IBOutlet weak var addToWishListButton: UIButton!
     
-    @IBOutlet weak var lineOfReleasedView: UIView!
+    var gameList: GameDetail?
+    var wishListDict: [String:[String]] = [:]
+
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        
         setupUI()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        addToWishListButton.backgroundColor = .wishListBackgroundColor
     }
     
     private func setupUI() {
@@ -45,16 +55,32 @@ class GameCollectionViewCell: UICollectionViewCell {
         genresLabel.textColor = .white
         genresLabel.font = .systemFont(ofSize: 10)
         descriptionContainerView.backgroundColor = .primaryColor
+        addToWishListButton.backgroundColor = .wishListBackgroundColor
     }
     
     func configure(gamesList: GameDetail) {
+        gameList = gamesList
         titleLabel.text = gamesList.name
-        
         
         prepareBannerImage(with: gamesList.backgroundImage)
         prepareRating(rating: gamesList.metacritic)
         preparePlatform(platforms: gamesList.parentPlatforms)
         prepareDescription(gamesList)
+        changeColorOfWishListButton(gamesList)
+    }
+    
+    private func changeColorOfWishListButton(_ gamesList: GameDetail) {
+        if let wishListData = UserDefaults.standard.dictionary(forKey: "WishList") as? [String:[String]]  {
+            wishListDict = wishListData
+            
+            for item in wishListDict {
+                if let id = gameList?.id {
+                    if item.key == "\(id)" {
+                        addToWishListButton.backgroundColor = .appleGreen
+                    }
+                }
+            }
+        }
     }
     
     private func prepareBannerImage(with urlString: String?) {
@@ -157,3 +183,5 @@ class GameCollectionViewCell: UICollectionViewCell {
     }
 
 }
+
+

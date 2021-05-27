@@ -27,13 +27,22 @@ class GameDetailViewController: UIViewController, LoadingShowable {
     @IBOutlet private weak var lineOfGenresView: UIView!
     @IBOutlet private weak var lineOfPublishersView: UIView!
     @IBOutlet weak var descriptionView: UIView!
+    @IBOutlet weak var wishListButton: UIBarButtonItem!
     
     let networkManager: NetworkManager<HomeEndpointItem> = NetworkManager()
+    let defaults = UserDefaults.standard
+    var delegateGames : RemoveFromWishListDelegate?
+    var delegateWishList : ReloadWishListCollectionView?
+
     private var gameDetailList: GameDetailList?
     private var collapseView = true
+    private var wishListDict: [String:[String]] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        getWishListData()
+        
         let tapToReddit = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         visitRedditView.addGestureRecognizer(tapToReddit)
         let tapToWebsite = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
@@ -41,6 +50,12 @@ class GameDetailViewController: UIViewController, LoadingShowable {
         let tapToDescription = UITapGestureRecognizer(target: self, action: #selector(self.handleTapDescription(_:)))
         descriptionView.addGestureRecognizer(tapToDescription)
         
+    }
+    
+    private func getWishListData() {
+        if let wishListData = defaults.dictionary(forKey: "WishList") as? [String:[String]]  {
+            wishListDict = wishListData
+        }
     }
     
     @objc func handleTapDescription(_ sender: UITapGestureRecognizer? = nil) {
@@ -186,5 +201,23 @@ class GameDetailViewController: UIViewController, LoadingShowable {
         let date = dateFormatter.date(from: date)
         dateFormatter.dateFormat = "MMM dd, yyyy"
         return  dateFormatter.string(from: date!)
+    }
+    
+    @IBAction func wishListButtonTapped(_ sender: Any) {
+        if let id = gameDetailList?.id {
+            if wishListButton.tintColor == UIColor.appleGreen {
+                wishListDict.removeValue(forKey: "\(id)")
+                defaults.set(wishListDict, forKey:"WishList")
+                wishListButton.tintColor = UIColor.white
+                delegateGames?.refreshCollectionView()
+                delegateWishList?.refreshCollectionView()
+            } else {
+                wishListDict["\(id)"] = [gameDetailList?.name ?? "", gameDetailList?.backgroundImage ?? ""]
+                defaults.set(wishListDict, forKey:"WishList")
+                wishListButton.tintColor = UIColor.appleGreen
+                delegateGames?.refreshCollectionView()
+                delegateWishList?.refreshCollectionView()
+            }
+        }
     }
 }

@@ -33,38 +33,31 @@
                                                     <constraint firstAttribute="width" secondItem="t2U-c9-wxw" secondAttribute="height" multiplier="358:201" id="ESx-Hd-HDb"/>
                                                 </constraints>
                                             </imageView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IMI-ul-857" userLabel="AddToWishListView">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lg-Vg-fga">
                                                 <rect key="frame" x="310" y="12" width="36" height="36"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gift" translatesAutoresizingMaskIntoConstraints="NO" id="0on-VX-XuH">
-                                                        <rect key="frame" x="9" y="9" width="18" height="18"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </imageView>
-                                                </subviews>
                                                 <color key="backgroundColor" name="addToWishListBackground"/>
                                                 <constraints>
-                                                    <constraint firstItem="0on-VX-XuH" firstAttribute="leading" secondItem="IMI-ul-857" secondAttribute="leading" constant="9" id="FfK-ca-SZb"/>
-                                                    <constraint firstItem="0on-VX-XuH" firstAttribute="top" secondItem="IMI-ul-857" secondAttribute="top" constant="9" id="Fqr-y5-U2E"/>
-                                                    <constraint firstAttribute="trailing" secondItem="0on-VX-XuH" secondAttribute="trailing" constant="9" id="L5W-wa-Q6c"/>
-                                                    <constraint firstAttribute="width" constant="36" id="NeC-KU-1Yj"/>
-                                                    <constraint firstAttribute="height" constant="36" id="OeF-Wu-ThN"/>
-                                                    <constraint firstAttribute="bottom" secondItem="0on-VX-XuH" secondAttribute="bottom" constant="9" id="VqW-LZ-NCf"/>
+                                                    <constraint firstAttribute="width" constant="36" id="6GX-rT-oi8"/>
+                                                    <constraint firstAttribute="height" constant="36" id="sA1-su-b1O"/>
                                                 </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="9" minY="9" maxX="9" maxY="9"/>
+                                                <state key="normal" image="gift"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="4"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
-                                            </view>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="IMI-ul-857" secondAttribute="trailing" constant="12" id="1uX-Ot-d19"/>
                                             <constraint firstAttribute="trailing" secondItem="t2U-c9-wxw" secondAttribute="trailing" id="BOW-Zn-K4k"/>
                                             <constraint firstAttribute="bottom" secondItem="t2U-c9-wxw" secondAttribute="bottom" id="Da7-t8-nZi"/>
                                             <constraint firstItem="t2U-c9-wxw" firstAttribute="leading" secondItem="7X2-ms-vxZ" secondAttribute="leading" id="L33-ae-tz7"/>
-                                            <constraint firstItem="IMI-ul-857" firstAttribute="top" secondItem="7X2-ms-vxZ" secondAttribute="top" constant="12" id="UAE-k5-8gu"/>
+                                            <constraint firstItem="7Lg-Vg-fga" firstAttribute="top" secondItem="7X2-ms-vxZ" secondAttribute="top" constant="12" id="OGo-xu-xhs"/>
+                                            <constraint firstAttribute="trailing" secondItem="7Lg-Vg-fga" secondAttribute="trailing" constant="12" id="hai-BS-9pV"/>
                                             <constraint firstItem="t2U-c9-wxw" firstAttribute="top" secondItem="7X2-ms-vxZ" secondAttribute="top" id="tJ7-Rb-OoK"/>
                                         </constraints>
                                     </view>
@@ -219,7 +212,7 @@
                 <constraint firstAttribute="bottom" secondItem="Ehb-cq-ARR" secondAttribute="bottom" id="llH-uU-ATR"/>
             </constraints>
             <connections>
-                <outlet property="addToWishList" destination="IMI-ul-857" id="9pY-kL-yzd"/>
+                <outlet property="addToWishListButton" destination="7Lg-Vg-fga" id="qxG-mh-ZN3"/>
                 <outlet property="bannerImageView" destination="t2U-c9-wxw" id="Oje-XQ-Oz4"/>
                 <outlet property="containerView" destination="Ehb-cq-ARR" id="Flu-gg-Mdm"/>
                 <outlet property="descriptionContainerView" destination="doU-tB-Rkw" id="gFR-0i-ogv"/>

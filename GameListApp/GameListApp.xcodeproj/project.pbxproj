@@ -38,6 +38,9 @@
 		C448F418265B172000E22BCD /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F417265B172000E22BCD /* UICollectionView+Extension.swift */; };
 		C448F420265B174D00E22BCD /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F41F265B174D00E22BCD /* UICollectionViewCell+Extension.swift */; };
 		C448F426265B180E00E22BCD /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F425265B180E00E22BCD /* NibView.swift */; };
+		C48A2EEC266010F600239F84 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48A2EEB266010F600239F84 /* WishListViewController.swift */; };
+		C48A2EF126601CEC00239F84 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48A2EF026601CEC00239F84 /* Dictionary+Extension.swift */; };
+		C48A2EF6266063D000239F84 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48A2EF5266063D000239F84 /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +96,9 @@
 		C448F417265B172000E22BCD /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		C448F41F265B174D00E22BCD /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		C448F425265B180E00E22BCD /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		C48A2EEB266010F600239F84 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
+		C48A2EF026601CEC00239F84 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
+		C48A2EF5266063D000239F84 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +175,7 @@
 				C448F3AA265AEF6100E22BCD /* GameListApp.xcdatamodeld */,
 				C448F3E0265AF37E00E22BCD /* HomeEndpointItem.swift */,
 				C40AB34A265EB5CB007F7535 /* GameDetailViewController.swift */,
+				C48A2EEB266010F600239F84 /* WishListViewController.swift */,
 			);
 			path = GameListApp;
 			sourceTree = "<group>";
@@ -246,6 +253,8 @@
 				C448F41F265B174D00E22BCD /* UICollectionViewCell+Extension.swift */,
 				C40AB329265C4397007F7535 /* UIColor+Extension.swift */,
 				C40AB362265EFC95007F7535 /* UICollection+Extension.swift */,
+				C48A2EF026601CEC00239F84 /* Dictionary+Extension.swift */,
+				C48A2EF5266063D000239F84 /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -401,15 +410,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				C448F418265B172000E22BCD /* UICollectionView+Extension.swift in Sources */,
+				C48A2EEC266010F600239F84 /* WishListViewController.swift in Sources */,
 				C40AB343265D82DC007F7535 /* Filter.swift in Sources */,
 				C448F3A6265AEF6100E22BCD /* GameListViewController.swift in Sources */,
 				C448F3E7265AF85700E22BCD /* Game.swift in Sources */,
+				C48A2EF126601CEC00239F84 /* Dictionary+Extension.swift in Sources */,
 				C40AB32A265C4397007F7535 /* UIColor+Extension.swift in Sources */,
 				C40AB34B265EB5CB007F7535 /* GameDetailViewController.swift in Sources */,
 				C448F412265B16A200E22BCD /* StampView.swift in Sources */,
 				C448F3A2265AEF6100E22BCD /* AppDelegate.swift in Sources */,
 				C40AB350265ECDDA007F7535 /* GameDetail.swift in Sources */,
 				C40AB33D265D7DEF007F7535 /* FilterCollectionViewCell.swift in Sources */,
+				C48A2EF6266063D000239F84 /* String+Extension.swift in Sources */,
 				C448F426265B180E00E22BCD /* NibView.swift in Sources */,
 				C448F3FF265B0B2600E22BCD /* GameCollectionViewCell.swift in Sources */,
 				C40AB336265D5226007F7535 /* GameColumnCollectionViewCell.swift in Sources */,

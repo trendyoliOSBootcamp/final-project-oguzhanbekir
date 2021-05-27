@@ -8,6 +8,10 @@
 import UIKit
 import CoreApi
 
+protocol RemoveFromWishListDelegate {
+    func refreshCollectionView()
+}
+
 extension GameListViewController {
     fileprivate enum Constants {
         static var cellDescriptionViewHeight: CGFloat = 159
@@ -29,20 +33,32 @@ class GameListViewController: UIViewController {
     private var filterList: Filter?
     private var searchTextWithFilter = ""
     private var searchText = ""
+    private var wishListDict: [String:[String]] = [:]
+    let defaults = UserDefaults.standard
+    var delegate : ReloadWishListCollectionView?
     
     @IBOutlet private weak var rightBarButton: UIBarButtonItem!
     @IBOutlet private weak var gameListCollectionView: UICollectionView!
-    @IBOutlet weak var filterCollectionView: UICollectionView!
-    @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var filterCollectionView: UICollectionView!
+    @IBOutlet private weak var headerViewHeightConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        getWishListData()
         fetchGameListData(.gamesList)
         prepareCollectionView()
         fetchFilterListData()
-        
         configureSearchController()
+        
+        if let navigationController = self.tabBarController?.viewControllers?[1] as? UINavigationController {
+            if let wishListVC = navigationController.viewControllers[0] as? WishListViewController {
+                wishListVC.delegate = self
+            }
+        }
     }
+    
+    
     
     private func prepareCollectionView() {
         filterCollectionView.delegate = self
@@ -50,15 +66,10 @@ class GameListViewController: UIViewController {
         gameListCollectionView.dataSource = self
         gameListCollectionView.delegate = self
         
-        
-    
         gameListCollectionView.register(cellType: GameColumnCollectionViewCell.self)
         gameListCollectionView.register(cellType: GameCollectionViewCell.self)
         filterCollectionView.register(cellType: FilterCollectionViewCell.self)
     }
-    
-
-    
     
     fileprivate func fetchFilterListData() {
         networkManager.request(endpoint: .filterList, type: Filter.self) { [weak self] result in
@@ -134,9 +145,12 @@ class GameListViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        
-//        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-//        navigationItem.scrollEdgeAppearance?.backButtonAppearance
+    }
+    
+    private func getWishListData() {
+        if let wishListData = defaults.dictionary(forKey: "WishList") as? [String:[String]]  {
+            wishListDict = wishListData
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -154,6 +168,8 @@ class GameListViewController: UIViewController {
             }, completion: nil)
          }
     }
+    
+  
 }
 
 extension GameListViewController: UICollectionViewDataSource {
@@ -162,13 +178,15 @@ extension GameListViewController: UICollectionViewDataSource {
             return filterList?.count ?? .zero
         } else {
             if gamesList?.count == 0 {
-                    self.gameListCollectionView.setEmptyMessage("No game has been found")
-                } else {
-                    self.gameListCollectionView.restore()
-                }
+                self.gameListCollectionView.setEmptyMessage("No game has been found")
+            } else {
+                self.gameListCollectionView.restore()
+            }
             return gamesList?.count ?? .zero
         }
     }
+    
+   
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == filterCollectionView {
@@ -179,15 +197,37 @@ extension GameListViewController: UICollectionViewDataSource {
             if layoutTwoColumns {
                 let cell = collectionView.dequeCell(cellType: GameColumnCollectionViewCell.self, indexPath: indexPath)
                 if let gameList = gamesList?[indexPath.item] {
-                    cell.configure(gamesList: gameList)
+                    cell.configure(id: gameList.id ?? 0, name: gameList.name ?? "", image: gameList.backgroundImage ?? "")
+                    cell.wishListButton.tag = indexPath.row
+                    cell.wishListButton.addTarget(self, action: #selector(wishListButtonTapped), for: .touchUpInside)
                 }
                 return cell
             } else {
                 let cell = collectionView.dequeCell(cellType: GameCollectionViewCell.self, indexPath: indexPath)
                 if let gameList = gamesList?[indexPath.item] {
                     cell.configure(gamesList: gameList)
+                    cell.addToWishListButton.tag = indexPath.row
+                    cell.addToWishListButton.addTarget(self, action: #selector(wishListButtonTapped), for: .touchUpInside)
                 }
                 return cell
+            }
+        }
+    }
+    
+    @objc func wishListButtonTapped(sender: UIButton) {
+        
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        if let id = gamesList?[indexPath.row].id {
+            if sender.backgroundColor == UIColor.wishListBackgroundColor {
+                wishListDict["\(id)"] = [gamesList?[indexPath.row].name ?? "", gamesList?[indexPath.row].backgroundImage ?? ""]
+                defaults.set(wishListDict, forKey:"WishList")
+                delegate?.refreshCollectionView()
+                sender.backgroundColor = UIColor.appleGreen
+            } else {
+                wishListDict.removeValue(forKey: "\(id)")
+                defaults.set(wishListDict, forKey:"WishList")
+                delegate?.refreshCollectionView()
+                sender.backgroundColor = UIColor.wishListBackgroundColor
             }
         }
     }
@@ -201,7 +241,6 @@ extension GameListViewController: UICollectionViewDataSource {
                     fetchGameListData(.filterItem(query: "&parent_platforms=\(filterListData[indexPath.item].id!)&search=\(searchText)"))
                 } else {
                     fetchGameListData(.filterItem(query: "&parent_platforms=\(filterListData[indexPath.item].id!)"))
-
                 }
             }
         } else {
@@ -209,6 +248,14 @@ extension GameListViewController: UICollectionViewDataSource {
                 let storyboard = UIStoryboard(name: "Main", bundle: .main)
                 let viewController = storyboard.instantiateViewController(identifier: "GameDetailViewController") as! GameDetailViewController
                 viewController.fetchGameDetailData(query: "\(id)")
+                viewController.delegateGames = self
+                for item in wishListDict {
+                    if let id = gamesList?[indexPath.item].id {
+                        if item.key == "\(id)" {
+                            viewController.wishListButton.tintColor = .appleGreen
+                        }
+                    }
+                }
                 navigationController?.pushViewController(viewController, animated: true)
             }
         }
@@ -275,33 +322,28 @@ extension GameListViewController: UICollectionViewDelegateFlowLayout {
 
 extension GameListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if collectionView == filterCollectionView {
-//            todo
-        } else {
+        if collectionView == gameListCollectionView {
             if indexPath.item == gamesList!.count - 1 {
                 shouldFetchNextPage = true
                 if let nextPageUrl = nextPageUrl {
                     if let url = URL(string: nextPageUrl) {
                         fetchGameListData(.nextPage(query: url.query ?? ""))
                     }
-                
                 }
             }
         }
     }
-    
-    
- 
 }
 
 extension GameListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)  {
         guard let text = searchController.searchBar.text else { return }
-        searchText = text
+        searchText = text.convertedToSlug()!
+        print(searchText)
         if searchTextWithFilter != "" {
             fetchGameListData(.filterItem(query: "&search=\(text)\(searchTextWithFilter)"))
         } else {
-            fetchGameListData(.filterItem(query: "&search=\(text)"))
+            fetchGameListData(.filterItem(query: "&search=\(searchText)"))
         }
         
         searchBar.resignFirstResponder()
@@ -310,4 +352,16 @@ extension GameListViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchText = ""
     }
+    
 }
+
+extension GameListViewController: RemoveFromWishListDelegate {
+    func refreshCollectionView() {
+        getWishListData()
+        gameListCollectionView.reloadData()
+        delegate?.refreshCollectionView()
+    }
+}
+
+
+

@@ -11,14 +11,36 @@
         <!--WishList-->
         <scene sceneID="AiL-yr-Fe7">
             <objects>
-                <viewController id="JOW-7M-jA7" sceneMemberID="viewController">
+                <viewController id="JOW-7M-jA7" customClass="WishListViewController" customModule="GameListApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dQ0-cO-VG8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bEa-JJ-5jF">
+                                <rect key="frame" x="0.0" y="16" width="414" height="709"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vks-b1-4FX">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="TRN-l4-jwc"/>
                         <color key="backgroundColor" name="mainBackground"/>
+                        <constraints>
+                            <constraint firstItem="bEa-JJ-5jF" firstAttribute="leading" secondItem="TRN-l4-jwc" secondAttribute="leading" id="B1a-bd-udF"/>
+                            <constraint firstItem="bEa-JJ-5jF" firstAttribute="top" secondItem="TRN-l4-jwc" secondAttribute="top" constant="16" id="JfE-m3-L12"/>
+                            <constraint firstItem="TRN-l4-jwc" firstAttribute="trailing" secondItem="bEa-JJ-5jF" secondAttribute="trailing" id="S9h-SN-aX2"/>
+                            <constraint firstItem="TRN-l4-jwc" firstAttribute="bottom" secondItem="bEa-JJ-5jF" secondAttribute="bottom" id="Wwt-J7-EJz"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="WishList" id="3YG-JD-LXa"/>
+                    <connections>
+                        <outlet property="wishListCollectionView" destination="bEa-JJ-5jF" id="PlW-LI-HPH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XDd-mT-aCA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -83,7 +105,7 @@
                         <outlet property="gameListCollectionView" destination="NCn-AT-RGy" id="XaM-Zz-TjK"/>
                         <outlet property="headerViewHeightConstraint" destination="Dah-qY-sjB" id="cxp-IT-ZLk"/>
                         <outlet property="rightBarButton" destination="b0Q-Tj-8UB" id="WOf-Fc-iCC"/>
-                        <segue destination="Mg7-Wn-6GV" kind="show" id="sxW-VO-ZnL"/>
+                        <segue destination="Mg7-Wn-6GV" kind="show" identifier="toDetail" id="sxW-VO-ZnL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YRN-Rt-fjc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -396,7 +418,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Game Detail" id="PtD-RP-uje">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="gift" id="BVK-NV-kZd"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="gift" id="BVK-NV-kZd">
+                            <connections>
+                                <action selector="wishListButtonTapped:" destination="Mg7-Wn-6GV" id="hWq-D4-DFs"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bannerImageView" destination="oUF-qx-fBA" id="7Qf-7I-LUR"/>
@@ -417,6 +443,7 @@
                         <outlet property="titleLabel" destination="PaP-Mz-EHS" id="58H-uO-aew"/>
                         <outlet property="visitRedditView" destination="oCy-NB-Eeq" id="BMZ-qL-eri"/>
                         <outlet property="visitWebsiteView" destination="ia2-aZ-QRW" id="kxv-li-oek"/>
+                        <outlet property="wishListButton" destination="BVK-NV-kZd" id="SWi-Ug-bHQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kbf-ib-mYq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

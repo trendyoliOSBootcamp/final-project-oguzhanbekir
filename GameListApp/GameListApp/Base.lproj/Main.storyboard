@@ -401,6 +401,7 @@
                     <connections>
                         <outlet property="bannerImageView" destination="oUF-qx-fBA" id="7Qf-7I-LUR"/>
                         <outlet property="descriptionLabel" destination="XXA-qh-CTO" id="ieP-4W-XMy"/>
+                        <outlet property="descriptionView" destination="Xqb-8N-d1R" id="nHU-lG-pdW"/>
                         <outlet property="genresLabel" destination="26r-DK-UWm" id="f5b-Wd-afJ"/>
                         <outlet property="genresStackView" destination="zsf-wj-aSd" id="HVY-O0-suZ"/>
                         <outlet property="lineOfGenresView" destination="tt0-fw-dYc" id="ZKj-ag-YsY"/>

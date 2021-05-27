@@ -26,10 +26,11 @@ class GameDetailViewController: UIViewController, LoadingShowable {
     @IBOutlet private weak var lineOfReleasedView: UIView!
     @IBOutlet private weak var lineOfGenresView: UIView!
     @IBOutlet private weak var lineOfPublishersView: UIView!
+    @IBOutlet weak var descriptionView: UIView!
     
     let networkManager: NetworkManager<HomeEndpointItem> = NetworkManager()
     private var gameDetailList: GameDetailList?
-
+    private var collapseView = true
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,6 +38,21 @@ class GameDetailViewController: UIViewController, LoadingShowable {
         visitRedditView.addGestureRecognizer(tapToReddit)
         let tapToWebsite = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         visitWebsiteView.addGestureRecognizer(tapToWebsite)
+        let tapToDescription = UITapGestureRecognizer(target: self, action: #selector(self.handleTapDescription(_:)))
+        descriptionView.addGestureRecognizer(tapToDescription)
+        
+    }
+    
+    @objc func handleTapDescription(_ sender: UITapGestureRecognizer? = nil) {
+        if let descriptionLabel = descriptionLabel {
+            descriptionLabel.numberOfLines = descriptionLabel.numberOfLines == 0 ? 4 : 0
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           options: [.allowUserInteraction],
+                           animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+       }
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {

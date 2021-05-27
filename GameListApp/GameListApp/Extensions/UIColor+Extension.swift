@@ -23,6 +23,14 @@ extension UIColor {
     class var navigationControllerBackgroundGray: UIColor {
         UIColor(red: 29/255, green: 29/255, blue: 29/255, alpha: 1)
     }
+    
+    class var appleGreen: UIColor {
+        UIColor(hex: "5dc534")
+    }
+    
+    class var wishListBackgroundColor: UIColor {
+        UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 1)
+    }
 
     convenience init(hex: String) {
         var hexString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()

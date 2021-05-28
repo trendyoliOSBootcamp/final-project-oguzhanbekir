@@ -22,7 +22,7 @@ extension GameListViewController {
     }
 }
 
-class GameListViewController: UIViewController {
+final class GameListViewController: UIViewController {
     let networkManager: NetworkManager<HomeEndpointItem> = NetworkManager()
     let searchController = UISearchController()
 
@@ -339,7 +339,6 @@ extension GameListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)  {
         guard let text = searchController.searchBar.text else { return }
         searchText = text.convertedToSlug()!
-        print(searchText)
         if searchTextWithFilter != "" {
             fetchGameListData(.filterItem(query: "&search=\(text)\(searchTextWithFilter)"))
         } else {

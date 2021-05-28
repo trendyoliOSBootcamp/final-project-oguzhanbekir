@@ -22,7 +22,7 @@ extension WishListViewController {
 }
 
 
-class WishListViewController: UIViewController {
+final class WishListViewController: UIViewController {
     let defaults = UserDefaults.standard
     var delegate : RemoveFromWishListDelegate?
     private var wishListDict: [String:[String]] = [:]

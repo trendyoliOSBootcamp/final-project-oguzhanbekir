@@ -8,7 +8,7 @@
 import UIKit
 import CoreApi
 
-class GameDetailViewController: UIViewController, LoadingShowable {
+final class GameDetailViewController: UIViewController, LoadingShowable {
     @IBOutlet private weak var bannerImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var ratingView: StampView!
@@ -26,7 +26,7 @@ class GameDetailViewController: UIViewController, LoadingShowable {
     @IBOutlet private weak var lineOfReleasedView: UIView!
     @IBOutlet private weak var lineOfGenresView: UIView!
     @IBOutlet private weak var lineOfPublishersView: UIView!
-    @IBOutlet weak var descriptionView: UIView!
+    @IBOutlet private weak var descriptionView: UIView!
     @IBOutlet weak var wishListButton: UIBarButtonItem!
     
     let networkManager: NetworkManager<HomeEndpointItem> = NetworkManager()

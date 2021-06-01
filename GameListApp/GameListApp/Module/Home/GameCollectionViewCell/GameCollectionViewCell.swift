@@ -27,7 +27,6 @@ class GameCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var addToWishListButton: UIButton!
     
     var gameList: GameDetail?
-    var wishListDict: [String:[String]] = [:]
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,6 +39,7 @@ class GameCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
 
         addToWishListButton.backgroundColor = .wishListBackgroundColor
+        titleLabel.textColor = .white
     }
     
     private func setupUI() {
@@ -67,13 +67,24 @@ class GameCollectionViewCell: UICollectionViewCell {
         preparePlatform(platforms: gamesList.parentPlatforms)
         prepareDescription(gamesList)
         changeColorOfWishListButton(gamesList)
+        changeColorOfVisitedGame(gamesList)
+    }
+    
+    private func changeColorOfVisitedGame(_ gameList: GameDetail) {
+        if let visitedGameData = UserDefaults.standard.dictionary(forKey: "GameVisited") as? [String: Bool]  {
+            for item in visitedGameData {
+                if let id = gameList.id {
+                    if item.key == "\(id)" {
+                        titleLabel.textColor = .visitedCellTitleColor
+                    }
+                }
+            }
+        }
     }
     
     private func changeColorOfWishListButton(_ gamesList: GameDetail) {
         if let wishListData = UserDefaults.standard.dictionary(forKey: "WishList") as? [String:[String]]  {
-            wishListDict = wishListData
-            
-            for item in wishListDict {
+            for item in wishListData {
                 if let id = gameList?.id {
                     if item.key == "\(id)" {
                         addToWishListButton.backgroundColor = .appleGreen

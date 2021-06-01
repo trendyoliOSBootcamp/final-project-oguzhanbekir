@@ -38,9 +38,13 @@
 		C448F418265B172000E22BCD /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F417265B172000E22BCD /* UICollectionView+Extension.swift */; };
 		C448F420265B174D00E22BCD /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F41F265B174D00E22BCD /* UICollectionViewCell+Extension.swift */; };
 		C448F426265B180E00E22BCD /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C448F425265B180E00E22BCD /* NibView.swift */; };
+		C4549511266448ED00817E8F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4549510266448ED00817E8F /* TabBarController.swift */; };
 		C48A2EEC266010F600239F84 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48A2EEB266010F600239F84 /* WishListViewController.swift */; };
 		C48A2EF126601CEC00239F84 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48A2EF026601CEC00239F84 /* Dictionary+Extension.swift */; };
 		C48A2EF6266063D000239F84 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48A2EF5266063D000239F84 /* String+Extension.swift */; };
+		C4EC0DAF2661A3B60053D37E /* WishListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EC0DAE2661A3B60053D37E /* WishListPresenter.swift */; };
+		C4EC0DB42661A3E70053D37E /* WishListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EC0DB32661A3E70053D37E /* WishListInteractor.swift */; };
+		C4EC0DB92661A3F40053D37E /* WishListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EC0DB82661A3F40053D37E /* WishListRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,9 +100,13 @@
 		C448F417265B172000E22BCD /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		C448F41F265B174D00E22BCD /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		C448F425265B180E00E22BCD /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		C4549510266448ED00817E8F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C48A2EEB266010F600239F84 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		C48A2EF026601CEC00239F84 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
 		C48A2EF5266063D000239F84 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		C4EC0DAE2661A3B60053D37E /* WishListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListPresenter.swift; sourceTree = "<group>"; };
+		C4EC0DB32661A3E70053D37E /* WishListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListInteractor.swift; sourceTree = "<group>"; };
+		C4EC0DB82661A3F40053D37E /* WishListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,22 +168,16 @@
 		C448F3A0265AEF6100E22BCD /* GameListApp */ = {
 			isa = PBXGroup;
 			children = (
-				C448F424265B180200E22BCD /* Utils */,
-				C448F416265B16EE00E22BCD /* Extensions */,
-				C448F404265B161E00E22BCD /* Views */,
-				C448F3F1265B0A8E00E22BCD /* GameCollectionViewCell */,
+				C4EC0DA82661A2780053D37E /* App */,
+				C4EC0DA92661A29E0053D37E /* Resource */,
+				C4EC0DAA2661A2CB0053D37E /* Module */,
 				C448F3E5265AF82E00E22BCD /* Model */,
-				C448F3A1265AEF6100E22BCD /* AppDelegate.swift */,
-				C448F3A5265AEF6100E22BCD /* GameListViewController.swift */,
-				C448F3A3265AEF6100E22BCD /* SceneDelegate.swift */,
-				C448F3A7265AEF6100E22BCD /* Main.storyboard */,
 				C448F3AD265AEF6100E22BCD /* Assets.xcassets */,
 				C448F3AF265AEF6100E22BCD /* LaunchScreen.storyboard */,
 				C448F3B2265AEF6100E22BCD /* Info.plist */,
 				C448F3AA265AEF6100E22BCD /* GameListApp.xcdatamodeld */,
-				C448F3E0265AF37E00E22BCD /* HomeEndpointItem.swift */,
 				C40AB34A265EB5CB007F7535 /* GameDetailViewController.swift */,
-				C48A2EEB266010F600239F84 /* WishListViewController.swift */,
+				C4549510266448ED00817E8F /* TabBarController.swift */,
 			);
 			path = GameListApp;
 			sourceTree = "<group>";
@@ -208,8 +210,6 @@
 		C448F3E5265AF82E00E22BCD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C448F3E6265AF85700E22BCD /* Game.swift */,
-				C40AB342265D82DC007F7535 /* Filter.swift */,
 				C40AB34F265ECDDA007F7535 /* GameDetail.swift */,
 			);
 			path = Model;
@@ -266,6 +266,66 @@
 				C40AB35D265EEB8B007F7535 /* LoadingShowable.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		C4EC0DA82661A2780053D37E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C448F3A1265AEF6100E22BCD /* AppDelegate.swift */,
+				C448F3A3265AEF6100E22BCD /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C4EC0DA92661A29E0053D37E /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				C448F424265B180200E22BCD /* Utils */,
+				C448F416265B16EE00E22BCD /* Extensions */,
+				C448F404265B161E00E22BCD /* Views */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		C4EC0DAA2661A2CB0053D37E /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				C448F3A7265AEF6100E22BCD /* Main.storyboard */,
+				C4EC0DAB2661A2ED0053D37E /* Home */,
+				C4EC0DAD2661A3490053D37E /* WishList */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		C4EC0DAB2661A2ED0053D37E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C4EC0DAC2661A3210053D37E /* Entity */,
+				C448F3F1265B0A8E00E22BCD /* GameCollectionViewCell */,
+				C448F3A5265AEF6100E22BCD /* GameListViewController.swift */,
+				C448F3E0265AF37E00E22BCD /* HomeEndpointItem.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C4EC0DAC2661A3210053D37E /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				C40AB342265D82DC007F7535 /* Filter.swift */,
+				C448F3E6265AF85700E22BCD /* Game.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		C4EC0DAD2661A3490053D37E /* WishList */ = {
+			isa = PBXGroup;
+			children = (
+				C4EC0DAE2661A3B60053D37E /* WishListPresenter.swift */,
+				C48A2EEB266010F600239F84 /* WishListViewController.swift */,
+				C4EC0DB32661A3E70053D37E /* WishListInteractor.swift */,
+				C4EC0DB82661A3F40053D37E /* WishListRouter.swift */,
+			);
+			path = WishList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,7 +469,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4EC0DAF2661A3B60053D37E /* WishListPresenter.swift in Sources */,
 				C448F418265B172000E22BCD /* UICollectionView+Extension.swift in Sources */,
+				C4EC0DB92661A3F40053D37E /* WishListRouter.swift in Sources */,
 				C48A2EEC266010F600239F84 /* WishListViewController.swift in Sources */,
 				C40AB343265D82DC007F7535 /* Filter.swift in Sources */,
 				C448F3A6265AEF6100E22BCD /* GameListViewController.swift in Sources */,
@@ -422,12 +484,14 @@
 				C40AB350265ECDDA007F7535 /* GameDetail.swift in Sources */,
 				C40AB33D265D7DEF007F7535 /* FilterCollectionViewCell.swift in Sources */,
 				C48A2EF6266063D000239F84 /* String+Extension.swift in Sources */,
+				C4EC0DB42661A3E70053D37E /* WishListInteractor.swift in Sources */,
 				C448F426265B180E00E22BCD /* NibView.swift in Sources */,
 				C448F3FF265B0B2600E22BCD /* GameCollectionViewCell.swift in Sources */,
 				C40AB336265D5226007F7535 /* GameColumnCollectionViewCell.swift in Sources */,
 				C40AB363265EFC95007F7535 /* UICollection+Extension.swift in Sources */,
 				C40AB35E265EEB8B007F7535 /* LoadingShowable.swift in Sources */,
 				C448F3A4265AEF6100E22BCD /* SceneDelegate.swift in Sources */,
+				C4549511266448ED00817E8F /* TabBarController.swift in Sources */,
 				C448F3AC265AEF6100E22BCD /* GameListApp.xcdatamodeld in Sources */,
 				C448F420265B174D00E22BCD /* UICollectionViewCell+Extension.swift in Sources */,
 				C448F3E1265AF37E00E22BCD /* HomeEndpointItem.swift in Sources */,
@@ -617,7 +681,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.oguzhanbekir.GameListApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -636,7 +700,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.oguzhanbekir.GameListApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

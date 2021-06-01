@@ -22,7 +22,7 @@ extension GameListViewController {
     }
 }
 
-final class GameListViewController: UIViewController {
+final class GameListViewController: UIViewController, LoadingShowable {
     let networkManager: NetworkManager<HomeEndpointItem> = NetworkManager()
     let searchController = UISearchController()
 
@@ -34,6 +34,7 @@ final class GameListViewController: UIViewController {
     private var searchTextWithFilter = ""
     private var searchText = ""
     private var wishListDict: [String:[String]] = [:]
+    private var firstIsLoading = true
     let defaults = UserDefaults.standard
     var delegate : ReloadWishListCollectionView?
     
@@ -46,7 +47,8 @@ final class GameListViewController: UIViewController {
         super.viewDidLoad()
 
         getWishListData()
-        fetchGameListData(.gamesList)
+        
+        fetchGameListData(.gamesList(query: ""))
         prepareCollectionView()
         fetchFilterListData()
         configureSearchController()
@@ -57,8 +59,6 @@ final class GameListViewController: UIViewController {
             }
         }
     }
-    
-    
     
     private func prepareCollectionView() {
         filterCollectionView.delegate = self
@@ -87,7 +87,14 @@ final class GameListViewController: UIViewController {
 
     
     fileprivate func fetchGameListData(_ endpoint : HomeEndpointItem) {
+        if firstIsLoading {
+            showLoading()
+        }
         networkManager.request(endpoint: endpoint, type: GameListResponse.self) { [weak self] result in
+            if self?.firstIsLoading == true {
+                self?.hideLoading()
+                self?.firstIsLoading = false
+            }
             switch result {
             case .success(let response):
                 if self?.shouldFetchNextPage == false {
@@ -132,19 +139,21 @@ final class GameListViewController: UIViewController {
     }
     
     private func configureSearchController() {
+        searchController.searchBar.delegate = self
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         navBarAppearance.backgroundColor = .navigationControllerBackgroundGray
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-        searchController.searchBar.delegate = self
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.placeholder = "Search"
         searchController.searchBar.barStyle = UIBarStyle.black
         searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
-        definesPresentationContext = true
+
+//        definesPresentationContext = false
+        
     }
     
     private func getWishListData() {
@@ -162,7 +171,7 @@ final class GameListViewController: UIViewController {
             }, completion: nil)
         } else {
             view.layoutIfNeeded()
-            headerViewHeightConstraint.constant = 68 
+            headerViewHeightConstraint.constant = 68
             UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction], animations: {
                 self.view.layoutIfNeeded()
             }, completion: nil)
@@ -173,6 +182,7 @@ final class GameListViewController: UIViewController {
 }
 
 extension GameListViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == filterCollectionView {
             return filterList?.count ?? .zero
@@ -237,10 +247,11 @@ extension GameListViewController: UICollectionViewDataSource {
             if let filterListData = filterList?.results {
                 shouldFetchNextPage = false
                 searchTextWithFilter = "&parent_platforms=\(filterListData[indexPath.item].id!)"
+                print(searchText)
                 if searchText != "" {
-                    fetchGameListData(.filterItem(query: "&parent_platforms=\(filterListData[indexPath.item].id!)&search=\(searchText)"))
+                    fetchGameListData(.gamesList(query: "&parent_platforms=\(filterListData[indexPath.item].id!)&search=\(searchText)"))
                 } else {
-                    fetchGameListData(.filterItem(query: "&parent_platforms=\(filterListData[indexPath.item].id!)"))
+                    fetchGameListData(.gamesList(query: "&parent_platforms=\(filterListData[indexPath.item].id!)"))
                 }
             }
         } else {
@@ -270,9 +281,9 @@ extension GameListViewController: UICollectionViewDataSource {
                 searchTextWithFilter = ""
                 collectionView.deselectItem(at: indexPath, animated: true)
                 if searchText != "" {
-                    fetchGameListData(.filterItem(query: "&search=\(searchText)"))
+                    fetchGameListData(.gamesList(query: "&search=\(searchText)"))
                 } else {
-                    fetchGameListData(.filterItem(query: ""))
+                    fetchGameListData(.gamesList(query: ""))
                 }
                 
             } else {
@@ -340,9 +351,9 @@ extension GameListViewController: UISearchBarDelegate {
         guard let text = searchController.searchBar.text else { return }
         searchText = text.convertedToSlug()!
         if searchTextWithFilter != "" {
-            fetchGameListData(.filterItem(query: "&search=\(text)\(searchTextWithFilter)"))
+            fetchGameListData(.gamesList(query: "&search=\(searchText)\(searchTextWithFilter)"))
         } else {
-            fetchGameListData(.filterItem(query: "&search=\(searchText)"))
+            fetchGameListData(.gamesList(query: "&search=\(searchText)"))
         }
         
         searchBar.resignFirstResponder()
@@ -361,6 +372,3 @@ extension GameListViewController: RemoveFromWishListDelegate {
         delegate?.refreshCollectionView()
     }
 }
-
-
-

@@ -24,6 +24,10 @@ extension UIColor {
         UIColor(red: 29/255, green: 29/255, blue: 29/255, alpha: 1)
     }
     
+    class var visitedCellTitleColor: UIColor {
+        UIColor(red: 118/255, green: 118/255, blue: 118/255, alpha: 1)
+    }
+    
     class var appleGreen: UIColor {
         UIColor(hex: "5dc534")
     }

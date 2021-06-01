@@ -47,7 +47,7 @@ final class GameListViewController: UIViewController, LoadingShowable {
         super.viewDidLoad()
 
         getWishListData()
-        
+        removeVisitedCell()
         fetchGameListData(.gamesList(query: ""))
         prepareCollectionView()
         fetchFilterListData()
@@ -58,6 +58,10 @@ final class GameListViewController: UIViewController, LoadingShowable {
                 wishListVC.delegate = self
             }
         }
+    }
+    
+    private func removeVisitedCell() {
+        defaults.removeObject(forKey: "GameVisited")
     }
     
     private func prepareCollectionView() {

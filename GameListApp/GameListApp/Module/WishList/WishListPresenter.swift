@@ -33,7 +33,7 @@ final class WishListPresenter {
     
     weak var view: WishListInterface?
     private let interactor: WishListInteractorInterface
-    
+
     init(view: WishListInterface, interactor: WishListInteractorInterface) {
         self.view = view
         self.interactor = interactor
@@ -59,7 +59,7 @@ extension WishListPresenter: WishListPresenterInterface {
     var cellPadding: Double {
         Constants.cellLeftPadding
     }
-
+    
     var numberOfItems: Int {
         wishListDict.count
     }

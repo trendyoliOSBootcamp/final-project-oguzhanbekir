@@ -11,11 +11,11 @@ import Foundation
 struct Filter: Decodable {
     let count: Int?
     let next, previous: String?
-    let results: [Result]?
+    let results: [ResultFilter]?
 }
 
 // MARK: - Result
-struct Result: Decodable {
+struct ResultFilter: Decodable {
     let id: Int?
     let name, slug: String?
     let platforms: [Platform]?

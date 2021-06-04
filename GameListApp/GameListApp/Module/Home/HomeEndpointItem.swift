@@ -9,7 +9,6 @@ import Foundation
 import CoreApi
 
 enum HomeEndpointItem: Endpoint {
-    case nextPage(query: String)
     case gamesList(query: String)
     case gameDetail(query: String)
     case filterList
@@ -17,7 +16,6 @@ enum HomeEndpointItem: Endpoint {
     var baseUrl: String { "https://api.rawg.io/api/" }
     var path: String {
         switch self {
-        case .nextPage(let query): return "games?\(query)"
         case .gamesList(let query): return "games?key=f7bda52777bd4e4cabb8386fbed8084e\(query)"
         case .filterList: return "platforms/lists/parents?key=f7bda52777bd4e4cabb8386fbed8084e"
         case .gameDetail(let query): return "games/\(query)?key=f7bda52777bd4e4cabb8386fbed8084e"
@@ -26,7 +24,6 @@ enum HomeEndpointItem: Endpoint {
 
     var method: HTTPMethod {
         switch self {
-        case .nextPage: return .get
         case .gamesList: return .get
         case .filterList: return .get
         case .gameDetail: return .get

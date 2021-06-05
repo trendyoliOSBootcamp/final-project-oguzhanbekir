@@ -182,15 +182,24 @@ extension GameListPresenter: GameListPresenterInterface {
     
     func searchGame(_ text: String) {
         searchText = text.convertedToSlug()!
-        if searchTextWithFilter != "" {
+        if !searchTextWithFilter.isEmpty {
+            shouldFetchNextPage = false
             fetchGameListData(.gamesList(query: "&search=\(searchText)\(searchTextWithFilter)"))
         } else {
+            shouldFetchNextPage = false
             fetchGameListData(.gamesList(query: "&search=\(searchText)"))
         }
     }
     
     func searchBarCancelButtonTapped() {
         searchText = ""
+        if !searchTextWithFilter.isEmpty {
+            shouldFetchNextPage = false
+            fetchGameListData(.gamesList(query: "\(searchTextWithFilter)"))
+        } else {
+            shouldFetchNextPage = false
+            fetchGameListData(.gamesList(query: ""))
+        }
     }
     
     var layoutTwoColumn: Bool {

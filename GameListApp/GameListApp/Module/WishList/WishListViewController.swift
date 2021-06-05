@@ -16,7 +16,7 @@ protocol WishListInterface: AnyObject {
     func prepareCollectionView()
 }
 
- class WishListViewController: UIViewController {
+final class WishListViewController: UIViewController {
     @IBOutlet weak var wishListCollectionView: UICollectionView!
     var presenter: WishListPresenterInterface!
     var delegate: RemoveFromWishListDelegate?

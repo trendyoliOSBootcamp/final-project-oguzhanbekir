@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class GameCollectionViewCell: UICollectionViewCell {
+final class GameCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var bannerImageView: UIImageView!
     @IBOutlet private weak var platformStackView: UIStackView!

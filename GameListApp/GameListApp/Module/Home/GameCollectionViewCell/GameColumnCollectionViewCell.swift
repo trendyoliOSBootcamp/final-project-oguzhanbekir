@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameColumnCollectionViewCell: UICollectionViewCell {
+final class GameColumnCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var bannerImageView: UIImageView!
     @IBOutlet private weak var descriptionContainerView: UIView!

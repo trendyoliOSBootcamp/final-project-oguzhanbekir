@@ -260,10 +260,7 @@ extension GameListViewController: GameListViewInterface {
         searchController.searchBar.placeholder = "Search"
         searchController.searchBar.barStyle = UIBarStyle.black
         searchController.obscuresBackgroundDuringPresentation = false
-        navigationItem.searchController = searchController
-
-//        definesPresentationContext = false
-        
+        navigationItem.searchController = searchController        
     }
     
 }

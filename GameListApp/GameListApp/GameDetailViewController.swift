@@ -37,11 +37,12 @@ final class GameDetailViewController: UIViewController, LoadingShowable {
     private var gameDetailList: GameDetailList?
     private var collapseView = true
     private var wishListDict: [String:[String]] = [:]
+    private var isVisitedDict: [String: Bool] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getWishListData()
+        getData()
         
         let tapToReddit = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         visitRedditView.addGestureRecognizer(tapToReddit)
@@ -49,13 +50,25 @@ final class GameDetailViewController: UIViewController, LoadingShowable {
         visitWebsiteView.addGestureRecognizer(tapToWebsite)
         let tapToDescription = UITapGestureRecognizer(target: self, action: #selector(self.handleTapDescription(_:)))
         descriptionView.addGestureRecognizer(tapToDescription)
-        
     }
     
-    private func getWishListData() {
-        if let wishListData = defaults.dictionary(forKey: "WishList") as? [String:[String]]  {
+    private func isVisited() {
+        if let id = gameDetailList?.id {
+            isVisitedDict["\(id)"] = true
+            defaults.set(isVisitedDict, forKey: "GameVisited")
+            delegateGames?.refreshCollectionView()
+            delegateWishList?.refreshCollectionView()
+        }
+    }
+    
+    private func getData() {
+        if let wishListData = defaults.dictionary(forKey: "WishList") as? [String: [String]]  {
             wishListDict = wishListData
         }
+        if let isVisitedData = defaults.dictionary(forKey: "GameVisited") as? [String: Bool]  {
+            isVisitedDict = isVisitedData
+        }
+        
     }
     
     @objc func handleTapDescription(_ sender: UITapGestureRecognizer? = nil) {
@@ -108,6 +121,7 @@ final class GameDetailViewController: UIViewController, LoadingShowable {
         prepareDescription(response)
         prepareRedditView(with: response.redditURL ?? "", view: visitRedditView)
         prepareRedditView(with: response.website ?? "", view: visitWebsiteView)
+        isVisited()
     }
     
     private func prepareRedditView(with urlString: String, view: UIView) {

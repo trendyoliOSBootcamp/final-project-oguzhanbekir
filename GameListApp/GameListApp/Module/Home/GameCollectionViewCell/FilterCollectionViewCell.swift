@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FilterCollectionViewCell: UICollectionViewCell {
+final class FilterCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {

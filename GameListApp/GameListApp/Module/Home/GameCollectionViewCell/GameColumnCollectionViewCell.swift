@@ -7,26 +7,25 @@
 
 import UIKit
 
-class GameColumnCollectionViewCell: UICollectionViewCell {
+final class GameColumnCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var bannerImageView: UIImageView!
     @IBOutlet private weak var descriptionContainerView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet weak var wishListButton: UIButton!
-    
-    var wishListDict: [String:[String]] = [:]
 
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
         setupUI()
     }
+    
     
     override func prepareForReuse() {
         super.prepareForReuse()
 
         wishListButton.backgroundColor = .wishListBackgroundColor
+        titleLabel.textColor = .white
     }
     
     private func setupUI() {
@@ -44,16 +43,28 @@ class GameColumnCollectionViewCell: UICollectionViewCell {
         titleLabel.text = name
         prepareBannerImage(with: image)
         changeColorOfWishListButton(id)
+        changeColorOfVisitedGame(id)
+    }
+    
+    private func changeColorOfVisitedGame(_ id: Int?) {
+        if let visitedGameData = UserDefaults.standard.dictionary(forKey: "GameVisited") as? [String: Bool]  {
+            for item in visitedGameData {
+                if let id = id {
+                    if item.key == "\(id)" {
+                        titleLabel.textColor = .visitedCellTitleColor
+                    }
+                }
+            }
+        }
     }
     
     private func changeColorOfWishListButton(_ id: Int?) {
         if let wishListData = UserDefaults.standard.dictionary(forKey: "WishList") as? [String:[String]]  {
-            wishListDict = wishListData
-        }
-        for item in wishListDict {
-            if let id = id {
-                if item.key == "\(id)" {
-                    wishListButton.backgroundColor = .appleGreen
+            for item in wishListData {
+                if let id = id {
+                    if item.key == "\(id)" {
+                        wishListButton.backgroundColor = .appleGreen
+                    }
                 }
             }
         }

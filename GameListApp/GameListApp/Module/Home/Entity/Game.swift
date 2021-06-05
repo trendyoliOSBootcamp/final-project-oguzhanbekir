@@ -13,19 +13,12 @@ struct GameListResponse: Decodable {
     let next: String?
     let previous: String?
     let results: [GameDetail]?
-    let seoTitle, seoDescription, seoKeywords, seoH1: String?
-    let noindex, nofollow: Bool?
     let gameDescription: String?
     let nofollowCollections: [String]?
     let userPlatforms: Bool?
     
     enum CodingKeys: String, CodingKey {
         case count, next, previous, results
-        case seoTitle = "seo_title"
-        case seoDescription = "seo_description"
-        case seoKeywords = "seo_keywords"
-        case seoH1 = "seo_h1"
-        case noindex, nofollow
         case gameDescription = "description"
         case nofollowCollections = "nofollow_collections"
         case userPlatforms = "user_platforms"
@@ -41,9 +34,7 @@ struct GameDetail: Decodable {
     let backgroundImage: String?
     let rating: Double?
     let ratingTop: Int?
-    let ratings: [Rating]?
     let ratingsCount, reviewsTextCount, added: Int?
-    let addedByStatus: AddedByStatus?
     let metacritic, playtime, suggestionsCount: Int?
     let updated: String?
     let userGame: String?
@@ -54,18 +45,15 @@ struct GameDetail: Decodable {
     let stores: [Store]?
     let clip: String?
     let esrbRating: EsrbRating?
-    let shortScreenshots: [ShortScreenshot]?
 
     enum CodingKeys: String, CodingKey {
         case id, slug, name, released, tba
         case backgroundImage = "background_image"
         case rating
         case ratingTop = "rating_top"
-        case ratings
         case ratingsCount = "ratings_count"
         case reviewsTextCount = "reviews_text_count"
         case added
-        case addedByStatus = "added_by_status"
         case metacritic, playtime
         case suggestionsCount = "suggestions_count"
         case updated
@@ -76,14 +64,7 @@ struct GameDetail: Decodable {
         case parentPlatforms = "parent_platforms"
         case genres, stores, clip
         case esrbRating = "esrb_rating"
-        case shortScreenshots = "short_screenshots"
     }
-}
-
-// MARK: - AddedByStatus
-struct AddedByStatus: Decodable {
-    let yet, owned, beaten, toplay: Int?
-    let dropped, playing: Int?
 }
 
 enum Color: String, Decodable {
@@ -126,26 +107,6 @@ struct ParentPlatform: Decodable {
     let platform: EsrbRating?
 }
 
-// MARK: - Rating
-struct Rating: Decodable {
-    let id: Int?
-    let title: Title?
-    let count: Int?
-    let percent: Double?
-}
-
-enum Title: String, Decodable {
-    case exceptional = "exceptional"
-    case meh = "meh"
-    case recommended = "recommended"
-    case skip = "skip"
-}
-
-// MARK: - ShortScreenshot
-struct ShortScreenshot: Decodable {
-    let id: Int?
-    let image: String?
-}
 
 // MARK: - Store
 struct Store: Decodable {

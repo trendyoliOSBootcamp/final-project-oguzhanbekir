@@ -16,6 +16,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
+        if let windowScene = scene as? UIWindowScene {
+            let window = UIWindow(windowScene: windowScene)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let tabBarController = storyboard.instantiateViewController(identifier: "TabBarController") as? TabBarController else { return }
+            window.rootViewController = tabBarController
+            let gameVC = GameListRouter.createModule()
+            let wishListVC = WishListRouter.createModule()
+            let gameNavigationController = UINavigationController(rootViewController: gameVC!)
+            let wishNavigationController = UINavigationController(rootViewController: wishListVC!)
+            
+            wishNavigationController.navigationBar.barTintColor = UIColor(named: "navigationBarBackground")
+            wishNavigationController.navigationBar.isTranslucent = false
+            wishNavigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            
+            tabBarController.viewControllers = [gameNavigationController,wishNavigationController]
+            
+            let tabItemGame = UITabBarItem(title: "Game", image: UIImage(named: "console"), tag: 0)
+            gameVC?.tabBarItem = tabItemGame
+            let tabItemWishlist = UITabBarItem(title: "WishList", image: UIImage(named: "gift"), tag: 1)
+            wishListVC?.tabBarItem = tabItemWishlist
+            self.window = window
+            window.makeKeyAndVisible()
+        }
+        
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 

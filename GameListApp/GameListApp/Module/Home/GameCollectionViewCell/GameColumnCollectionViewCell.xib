@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="GameColumnCollectionViewCell" customModule="GameListApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="171" height="243"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="171" height="243"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="71b-gn-BPh">
+                        <rect key="frame" x="0.0" y="0.0" width="171" height="243"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2CS-Ag-eKq">
+                                <rect key="frame" x="0.0" y="0.0" width="171" height="243"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9PL-3K-aLP">
+                                        <rect key="frame" x="0.0" y="0.0" width="171" height="171"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Cs-9v-tc1">
+                                                <rect key="frame" x="0.0" y="0.0" width="171" height="171"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="1Cs-9v-tc1" secondAttribute="height" multiplier="1:1" id="Ycm-6f-q2c"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHA-0Z-t3x">
+                                                <rect key="frame" x="123" y="12" width="36" height="36"/>
+                                                <color key="backgroundColor" name="addToWishListBackground"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="36" id="50H-3F-YiN"/>
+                                                    <constraint firstAttribute="height" constant="36" id="8QA-97-J6d"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="9" minY="9" maxX="9" maxY="9"/>
+                                                <state key="normal" image="gift"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="1Cs-9v-tc1" firstAttribute="top" secondItem="9PL-3K-aLP" secondAttribute="top" id="0Kv-az-uCT"/>
+                                            <constraint firstAttribute="bottom" secondItem="1Cs-9v-tc1" secondAttribute="bottom" id="3tg-fF-D1c"/>
+                                            <constraint firstAttribute="trailing" secondItem="1Cs-9v-tc1" secondAttribute="trailing" id="3w6-im-Bd7"/>
+                                            <constraint firstItem="1Cs-9v-tc1" firstAttribute="leading" secondItem="9PL-3K-aLP" secondAttribute="leading" id="Sso-OX-auE"/>
+                                            <constraint firstItem="pHA-0Z-t3x" firstAttribute="top" secondItem="9PL-3K-aLP" secondAttribute="top" constant="12" id="WYh-Et-l9F"/>
+                                            <constraint firstAttribute="trailing" secondItem="pHA-0Z-t3x" secondAttribute="trailing" constant="12" id="bik-Kk-oyZ"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kbr-QK-bzQ">
+                                        <rect key="frame" x="0.0" y="171" width="171" height="72"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subnautica: Below Zero" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMK-bk-FJf">
+                                                <rect key="frame" x="12" y="12" width="147" height="48"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="aMK-bk-FJf" secondAttribute="bottom" constant="12" id="XoV-VW-tq1"/>
+                                            <constraint firstAttribute="trailing" secondItem="aMK-bk-FJf" secondAttribute="trailing" constant="12" id="ev4-ru-dPO"/>
+                                            <constraint firstItem="aMK-bk-FJf" firstAttribute="top" secondItem="Kbr-QK-bzQ" secondAttribute="top" constant="12" id="pcc-nP-jht"/>
+                                            <constraint firstItem="aMK-bk-FJf" firstAttribute="leading" secondItem="Kbr-QK-bzQ" secondAttribute="leading" constant="12" id="t0F-7C-L7W"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2CS-Ag-eKq" secondAttribute="trailing" id="7vD-fF-vrd"/>
+                            <constraint firstItem="2CS-Ag-eKq" firstAttribute="top" secondItem="71b-gn-BPh" secondAttribute="top" id="V9Z-tl-cJP"/>
+                            <constraint firstItem="2CS-Ag-eKq" firstAttribute="leading" secondItem="71b-gn-BPh" secondAttribute="leading" id="fMa-J1-Kd5"/>
+                            <constraint firstAttribute="bottom" secondItem="2CS-Ag-eKq" secondAttribute="bottom" id="ylz-0W-vmn"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="71b-gn-BPh" secondAttribute="trailing" id="47f-My-czE"/>
+                <constraint firstItem="71b-gn-BPh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Tmg-mz-ggH"/>
+                <constraint firstItem="71b-gn-BPh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="m3r-kj-0Uw"/>
+                <constraint firstAttribute="bottom" secondItem="71b-gn-BPh" secondAttribute="bottom" id="qq6-oK-Wlr"/>
+            </constraints>
+            <connections>
+                <outlet property="bannerImageView" destination="1Cs-9v-tc1" id="LDI-vW-Hag"/>
+                <outlet property="containerView" destination="71b-gn-BPh" id="jqP-ej-EPd"/>
+                <outlet property="descriptionContainerView" destination="Kbr-QK-bzQ" id="elZ-Ap-i0N"/>
+                <outlet property="titleLabel" destination="aMK-bk-FJf" id="fQC-LC-ZB3"/>
+                <outlet property="wishListButton" destination="pHA-0Z-t3x" id="dVC-1Q-4a0"/>
+            </connections>
+            <point key="canvasLocation" x="-139.13043478260872" y="49.553571428571423"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="gift" width="25" height="25"/>
+        <namedColor name="addToWishListBackground">
+            <color red="0.21600000560283661" green="0.21600000560283661" blue="0.21600000560283661" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
